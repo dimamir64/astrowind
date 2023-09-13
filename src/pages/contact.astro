@@ -5,23 +5,23 @@ import ContactUs from '~/components/widgets/Contact.astro';
 import Features2 from '~/components/widgets/Features2.astro';
 
 const metadata = {
-  title: 'Contact',
+  title: 'Контакты',
 };
 ---
 
 <Layout metadata={metadata}>
   <!-- HeroText Widget ******************* -->
 
-  <HeroText tagline="Contact" title="Let's Connect!" />
+  <HeroText tagline="Контакты" title="Давайте общаться!" />
 
   <ContactUs
-    title="Drop us a message today!"
-    subtitle="For quicker answers, explore our FAQs section. You may find the solution you're looking  for right there! If not, our support team is delighted to help you."
+    title="Отправьте сообщение сейчас!"
+    subtitle='Для получения более быстрых ответов ознакомьтесь с нашим разделом часто задаваемых вопросов. Возможно, вы найдете решение, которое ищете, прямо здесь! Если нет, то наша служба поддержки с радостью вам поможет. '
     inputs={[
       {
         type: 'text',
         name: 'name',
-        label: 'Name',
+        label: 'Ваше имя',
       },
       {
         type: 'email',
@@ -30,13 +30,13 @@ const metadata = {
       },
     ]}
     textarea={{
-      label: 'Message',
+      label: 'Сообщение',
     }}
     disclaimer={{
       label:
-        'By submitting this contact form, you acknowledge and agree to the collection of your personal information.',
+        'Отправляя сообщение вы соглашаетесь на обработку своих персональных данных',
     }}
-    description="Our support team typically responds within 24 business hours."
+    description="Обычно наша служба поддержки отвечает в течении 24 часов"
   />
 
   <!-- Features2 Widget ************** -->
@@ -45,32 +45,31 @@ const metadata = {
     title="We are here to help!"
     items={[
       {
-        title: 'General support',
-        description: `Chat with us for inquiries related to account management, website navigation, payment issues, accessing purchased templates or general questions about the website's functionality.`,
+        title: 'Общая поддержка',
+        description: `Обращайтесь к нам по вопросам, связанным с управлением учетной записью, навигацией по веб-сайту, проблемами оплаты или общими вопросами о функциональности веб-сайта.`,
       },
       {
-        title: 'Contact sales',
+        title: 'Свяжитесь с отделом продаж',
+        description:'Обращайтесь к нам по вопросам о покупках круизов, дополнительной информацией о наших теплоходах, маршрутах, расписании и т.д.',
+      },
+      {
+        title: 'Техническая поддержка',
         description:
-          'Chat with us for questions about purchases, customization options, licensing for commercial use, inquiries about specific template, etc.',
+          'Обращайтесь к нам, если сталкиваетесь с проблемами в работе сайта',
       },
       {
-        title: 'Technical support',
-        description:
-          'Chat with us when facing issues like template installation, problems editing difficulties, compatibility issues with software or download errors, or other technical challenges related to using the templates.',
-      },
-      {
-        title: 'Phone',
-        description: '+1 (234) 567-890',
+        title: 'Телефон',
+        description: '+7(846)270-4040',
         icon: 'tabler:headset',
       },
       {
         title: 'Email',
-        description: 'contact@support.com',
+        description: 'cruise@sputnik-germes.ru',
         icon: 'tabler:mail',
       },
       {
-        title: 'Location',
-        description: '1234 Lorem Ipsum St, 12345, Miami, EEUU',
+        title: 'Наш адрес',
+        description: 'г. Самара, ул. Ленинская, 166',
         icon: 'tabler:map-pin',
       },
     ]}

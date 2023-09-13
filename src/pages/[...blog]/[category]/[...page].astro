@@ -17,7 +17,7 @@ const { page, category } = Astro.props;
 const currentPage = page.currentPage ?? 1;
 
 const metadata = {
-  title: `Category '${category}' ${currentPage > 1 ? ` — Page ${currentPage}` : ''}`,
+  title: `Категория '${category}' ${currentPage > 1 ? ` — Стр. ${currentPage}` : ''}`,
   robots: {
     index: blogCategoryRobots?.index,
     follow: blogCategoryRobots?.follow,

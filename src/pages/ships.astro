@@ -7,7 +7,7 @@ import Testimonials from '~/components/widgets/Testimonials.astro';
 import Layout from '~/layouts/PageLayout.astro';
 
 const metadata = {
-  title: 'Services',
+  title: 'Круизный флот компании',
 };
 ---
 
@@ -15,14 +15,16 @@ const metadata = {
   <!-- Hero Widget ******************* -->
 
   <Hero
-    tagline="Services"
-    title="Elevate your projects with our stunning templates"
-    subtitle="Explore our meticulously crafted templates tailored to various industries and purposes. From captivating presentations to functional website designs, we offer the tools you need to succeed."
-    actions={[{ variant:"primary", target: '_blank', text: 'Start exploring', href: '/' }]}
-    image={{
-      src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80',
-      alt: 'AstroWind Hero Ima1ge',
-    }}
+    tagline="Круизный флот"
+    title="Наши теплоходы"
+    subtitle=""
+    actions={[      {
+      variant: 'primary',
+      text: 'Поиск круизов',
+      href: 'https://river.sputnik-germes.ru/',
+      target: '_blank',
+      icon: 'tabler:arrows-right-left',
+    },{ text: 'Смотреть подробно', href: '#features' }]}
   />
 
   <!-- Features2 Widget ************** -->
@@ -89,41 +91,29 @@ const metadata = {
 
   <!-- Content Widget **************** -->
 
-  <Content
+  <Content id="features"
     isReversed
     items={[
       {
-        title: 'High-Quality Designs',
+        title: 'Комфортабельный четырёхпалубный теплоход проекта 301м',
         description:
-          'Our templates feature top-tier designs that ensure a professional and polished appearance for your projects.',
+          'Построен в Германии. В 1996 году был полностью переоборудован. Длина судна-125 м., ширина-16,7 м., скорость-26 км/час, пассажировместимость до 270 человек. На своём борту имеет 16 кают категории “Люкс” с дополнительным сервисом, комфортабельные 1-но, 2-х и 3-х местные каюты со всеми удобствами.',
         icon: 'tabler:wand',
       },
       {
-        title: 'Customization Tools',
+        title: 'Комфорт',
         description:
-          'Tailor each template to your unique needs with user-friendly customization tools that let you personalize colors, fonts, and content.',
+          'Попадая на борт корабля оказываешься в атмосфере комфорта. Просторные палубы со смотровыми площадками и объемное внутреннее пространство создают условия для полноценного размеренного отдыха. Теплоход подходит как для пар и соло-путешественников, так для небольших компаний и корпоративных мероприятий.',
         icon: 'tabler:settings',
-      },
-      {
-        title: 'Pre-Designed Elements',
-        description:
-          'Save time and effort with our ready-to-use elements, including graphics, icons, and layouts that enhance the visual appeal of your creations.',
-        icon: 'tabler:presentation',
-      },
-      {
-        title: 'Preview and Mockup Views',
-        description:
-          'Visualize the final outcome before making any changes using our preview and mockup views, ensuring your projects meet your expectations.',
-        icon: 'tabler:carousel-horizontal',
       },
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1525909002-1b05e0c869d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80',
+      src: '~/assets/images/49.jpg',
       alt: 'Features Image',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Main Features</h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Федор Достоевский</h3>
     </Fragment>
   </Content>
 
@@ -133,44 +123,32 @@ const metadata = {
     isAfterContent
     items={[
       {
-        title: 'Time Savings',
+        title: 'Оптимальный выбор',
         description:
-          'Streamline your workflow, enabling you to create stunning materials efficiently and allocate more time to your core tasks.',
+          'Фирменный теплоход «Валерий Чкалов» обладает особой атмосферой и отлично зарекомендовал себя как оптимальный вариант для корпоративных мероприятий и встреч старых и новых друзей',
         icon: 'tabler:clock',
       },
       {
-        title: 'Professional Appearance',
+        title: 'Подробнее',
         description:
-          'Elevate your projects with the polished and sophisticated look that our templates provide, making a lasting impression on your audience.',
+          'Пассажирский трёхпалубный теплоход-пансионат «Валерий Чкалов» (проект 26-37м) построен на судоверфи «Narodny Podnik Skoda» (Slovenske Lodenice Komarno) г. Комарно,Словакия. Полностью модернизирован. Пассажировместимость-176 чел. Оснащён современным навигационным оборудованием и развивает скорость до 23 км/час. Длина-96 м, ширина, 14 м, осадка 2,4 м. Это фирменный теплоход компании «Спутник-Гермес», находящийся в собственности.',
         icon: 'tabler:school',
-      },
-      {
-        title: 'Cost-Efficiency',
-        description:
-          'Benefit from cost savings by avoiding the need for custom design work, as our templates offer professional-grade designs at a fraction of the cost.',
-        icon: 'tabler:coin',
-      },
-      {
-        title: 'Instant Download',
-        description:
-          'Enjoy immediate access to your chosen templates upon purchase, enabling you to begin working on your projects without delay.',
-        icon: 'tabler:file-download',
-      },
+      }
     ]}
     image={{
-      src: 'https://images.unsplash.com/photo-1552664688-cf412ec27db2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=774&q=80',
-      alt: 'Benefits Image',
+      src: '~/assets/images/2.jpg',
+      alt: 'Валерий Чкалов',
     }}
   >
     <Fragment slot="content">
-      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Benefits</h3>
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Валерий Чкалов</h3>
     </Fragment>
   </Content>
 
   <!-- Testimonials Widget *********** -->
 
   <Testimonials
-    title="Words from real customers"
+    title="Отзывы реальных пассажиров"
     testimonials={[
       {
         testimonial: `The designs are not only visually appealing but also highly professional. The templates have saved me a significant amount of time while helping me make a lasting impression on my clients.`,
@@ -202,8 +180,8 @@ const metadata = {
     ]}
     callToAction={{
       target: '_blank',
-      text: 'More testimonials...',
-      href: 'https://github.com/onwidget/astrowind',
+      text: 'Остальные отзывы',
+      href: 'https://www.sputnik-germes.ru/rechnyie-kruizyi/vazhnoe/otzyvy-turistov-v-navigacii-g/',
       icon: 'tabler:chevron-right',
     }}
   />

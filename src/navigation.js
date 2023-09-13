@@ -3,109 +3,126 @@ import { getPermalink, getBlogPermalink, getAsset } from './utils/permalinks';
 export const headerData = {
   links: [
     {
-      text: 'Homes',
+      text: 'Админка',
       links: [
         {
-          text: 'SaaS',
+          text: 'Теплоход',
+          href: getPermalink('/admin/ship'),
+        },
+        {
+          text: 'Тест',
+          href: getPermalink('/admin/tst'),
+        },
+      ],
+    },
+    {
+      text: 'Компания',
+      links: [
+        {
+          text: 'Облачные решения',
           href: getPermalink('/homes/saas'),
         },
         {
-          text: 'Startup',
+          text: 'Стартап',
           href: getPermalink('/homes/startup'),
         },
         {
-          text: 'Mobile App',
+          text: 'Мобильное приложение',
           href: getPermalink('/homes/mobile-app'),
         },
         {
-          text: 'Personal',
+          text: 'Сотрудники',
           href: getPermalink('/homes/personal'),
         },
       ],
     },
     {
-      text: 'Pages',
+      text: 'Страницы',
       links: [
         {
-          text: 'Features (Anchor Link)',
+          text: 'Особенности',
           href: getPermalink('/#features'),
         },
         {
-          text: 'Services',
+          text: 'Круизный флот',
+          href: getPermalink('/ships'),
+        },
+        {
+          text: 'Сервисы',
           href: getPermalink('/services'),
         },
         {
-          text: 'Pricing',
+          text: 'Цены',
           href: getPermalink('/pricing'),
         },
         {
-          text: 'About us',
+          text: 'О нас',
           href: getPermalink('/about'),
         },
         {
-          text: 'Contact',
+          text: 'Контакты',
           href: getPermalink('/contact'),
         },
         {
-          text: 'Terms',
+          text: 'Условия и правила',
           href: getPermalink('/terms'),
         },
         {
-          text: 'Privacy policy',
+          text: 'Политика конфиденциальности',
           href: getPermalink('/privacy'),
         },
       ],
     },
     {
-      text: 'Landing',
+      text: 'Лендинги',
       links: [
         {
-          text: 'Lead Generation',
+          text: 'Лидогенерация',
           href: getPermalink('/landing/lead-generation'),
         },
         {
-          text: 'Long-form Sales',
+          text: 'Долгосрочные продажи',
           href: getPermalink('/landing/sales'),
         },
         {
-          text: 'Click-Through',
+          text: 'Переход по ссылке',
           href: getPermalink('/landing/click-through'),
         },
         {
-          text: 'Product Details (or Services)',
+          text: 'Подробно о продуктах',
           href: getPermalink('/landing/product'),
         },
         {
-          text: 'Coming Soon or Pre-Launch',
+          text: 'Дорожная карта',
           href: getPermalink('/landing/pre-launch'),
         },
         {
-          text: 'Subscription',
+          text: 'Подписка',
           href: getPermalink('/landing/subscription'),
         },
       ],
     },
     {
-      text: 'Blog',
+      text: 'Блог',
       links: [
         {
-          text: 'Blog List',
+          text: 'Список блогов',
           href: getBlogPermalink(),
         },
         {
-          text: 'Article',
+          text: 'Статьи',
           href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
         },
         {
-          text: 'Article (with MDX)',
+          text: 'Статьи (с MDX)',
           href: getPermalink('markdown-elements-demo-post', 'post'),
         },
         {
-          text: 'Category Page',
+          text: 'Категории страниц',
           href: getPermalink('tutorials', 'category'),
         },
         {
-          text: 'Tag Page',
+          text: 'Тэги страниц',
           href: getPermalink('astro', 'tag'),
         },
       ],
@@ -115,13 +132,13 @@ export const headerData = {
       href: '#',
     },
   ],
-  actions: [{ text: 'Download', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  actions: [{ text: 'Загрузить', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
 };
 
 export const footerData = {
   links: [
     {
-      title: 'Product',
+      title: 'Продукты',
       links: [
         { text: 'Features', href: '#' },
         { text: 'Security', href: '#' },
@@ -133,7 +150,7 @@ export const footerData = {
       ],
     },
     {
-      title: 'Platform',
+      title: 'Платформы',
       links: [
         { text: 'Developer API', href: '#' },
         { text: 'Partners', href: '#' },
@@ -143,7 +160,7 @@ export const footerData = {
       ],
     },
     {
-      title: 'Support',
+      title: 'Поддержка',
       links: [
         { text: 'Docs', href: '#' },
         { text: 'Community Forum', href: '#' },
@@ -153,7 +170,7 @@ export const footerData = {
       ],
     },
     {
-      title: 'Company',
+      title: 'Компания',
       links: [
         { text: 'About', href: '#' },
         { text: 'Blog', href: '#' },
@@ -166,8 +183,8 @@ export const footerData = {
     },
   ],
   secondaryLinks: [
-    { text: 'Terms', href: getPermalink('/terms') },
-    { text: 'Privacy Policy', href: getPermalink('/privacy') },
+    { text: 'Условия', href: getPermalink('/terms') },
+    { text: 'Политика конфиденциальности', href: getPermalink('/privacy') },
   ],
   socialLinks: [
     { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
@@ -178,6 +195,6 @@ export const footerData = {
   ],
   footNote: `
     <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"></span>
-    Made by <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://onwidget.com/"> onWidget</a> · All rights reserved.
+    Сделано <a class="text-blue-600 hover:underline dark:text-gray-200" href="https://websturm.ru/"> Веб Штурм</a> · Права защищены.
   `,
 };

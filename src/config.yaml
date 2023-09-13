@@ -1,6 +1,6 @@
 site:
-  name: AstroWind
-  site: 'https://astrowind.vercel.app'
+  name: Спутник-Гермес
+  site: 'https://cons.ud63.online/'
   base: '/'
   trailingSlash: false
 
@@ -9,26 +9,26 @@ site:
 # Default SEO metadata
 metadata:
   title:
-    default: AstroWind
-    template: '%s — AstroWind'
-  description: "\U0001F680 Suitable for Startups, Small Business, Sass Websites, Professional Portfolios, Marketing Websites, Landing Pages & Blogs."
+    default: Система бронированиия речных круизов
+    template: '%s — Спутник-Гермес 2024'
+  description: "Туроператор «Спутник-Гермес» приглашает в речные круизы выходного дня, эксклюзивные и на прогулки по Волге на теплоходе. Туры от 700 рублей с человека."
   robots:
     index: true
     follow: true
   openGraph:
-    site_name: AstroWind
+    site_name: Спутник-Гермес
     images:
       - url: '~/assets/images/default.png'
         width: 1200
         height: 628
     type: website
   twitter:
-    handle: '@onwidget'
-    site: '@onwidget'
+    handle: '@river'
+    site: '@river'
     cardType: summary_large_image
 
 i18n:
-  language: en
+  language: ru
   textDirection: ltr
 
 apps:

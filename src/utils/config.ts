@@ -24,7 +24,7 @@ export interface I18NConfig {
 }
 export interface AppBlogConfig {
   isEnabled: boolean;
-  postsPerPage: number;
+  postsPerPage: number; 
   post: {
     isEnabled: boolean;
     permalink: string;
@@ -78,7 +78,7 @@ const config = yaml.load(fs.readFileSync('src/config.yaml', 'utf8')) as {
   analytics?: unknown;
 };
 
-const DEFAULT_SITE_NAME = 'Website';
+const DEFAULT_SITE_NAME = 'Спутник-Гермес';
 
 const getSite = () => {
   const _default = {
@@ -116,7 +116,7 @@ const getMetadata = () => {
 
 const getI18N = () => {
   const _default = {
-    language: 'en',
+    language: 'ru',
     textDirection: 'ltr',
   };
 

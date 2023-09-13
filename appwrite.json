@@ -1,0 +1,158 @@
+{
+    "projectId": "64ffef37993c014bd588",
+    "projectName": "Demos For Astro",
+    "databases": [
+        {
+            "$id": "blog",
+            "name": "Blog",
+            "$createdAt": "2023-05-24T10:32:35.676+00:00",
+            "$updatedAt": "2023-05-24T10:32:35.676+00:00"
+        }
+    ],
+    "collections": [
+        {
+            "$id": "posts",
+            "$permissions": [
+                "read(\"any\")",
+                "create(\"team:authors\")",
+                "update(\"team:authors\")",
+                "delete(\"team:authors\")"
+            ],
+            "databaseId": "blog",
+            "name": "Posts",
+            "enabled": true,
+            "documentSecurity": true,
+            "attributes": [
+                {
+                    "key": "slug",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "title",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "content",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 1073741824,
+                    "default": null
+                },
+                {
+                    "key": "description",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 255,
+                    "default": null
+                },
+                {
+                    "key": "imageUrl",
+                    "type": "string",
+                    "status": "available",
+                    "required": false,
+                    "array": false,
+                    "format": "url",
+                    "default": null
+                }
+            ],
+            "indexes": [
+                {
+                    "key": "slug",
+                    "type": "key",
+                    "status": "available",
+                    "attributes": [
+                        "slug"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                }
+            ]
+        },
+        {
+            "$id": "comments",
+            "$permissions": [
+                "read(\"any\")",
+                "create(\"users\")"
+            ],
+            "databaseId": "blog",
+            "name": "Comments",
+            "enabled": true,
+            "documentSecurity": true,
+            "attributes": [
+                {
+                    "key": "postId",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 26,
+                    "default": null
+                },
+                {
+                    "key": "content",
+                    "type": "string",
+                    "status": "available",
+                    "required": true,
+                    "array": false,
+                    "size": 1073741824,
+                    "default": null
+                }
+            ],
+            "indexes": [
+                {
+                    "key": "postId",
+                    "type": "key",
+                    "status": "available",
+                    "attributes": [
+                        "postId"
+                    ],
+                    "orders": [
+                        "ASC"
+                    ]
+                }
+            ]
+        }
+    ],
+    "teams": [
+        {
+            "$id": "authors",
+            "name": "authors"
+        }
+    ],
+    "buckets": [
+        {
+            "$id": "post_images",
+            "$createdAt": "2023-05-24T14:03:26.874+00:00",
+            "$updatedAt": "2023-05-24T14:04:32.937+00:00",
+            "$permissions": [
+                "read(\"any\")",
+                "create(\"team:authors\")",
+                "update(\"team:authors\")",
+                "delete(\"team:authors\")"
+            ],
+            "fileSecurity": false,
+            "name": "post_images",
+            "enabled": true,
+            "maximumFileSize": 3000000000,
+            "allowedFileExtensions": [],
+            "compression": "none",
+            "encryption": true,
+            "antivirus": true
+        }
+    ]
+}
