@@ -11,7 +11,27 @@ export const headerData = {
         },
         {
           text: 'Тест',
-          href: getPermalink('/admin/tst'),
+          href: getPermalink('/admin/sankey/tst'),
+        },
+        {
+          text: 'Стр',
+          href: getPermalink('/admin/tst1'),
+        },
+        {
+          text: 'Стр2',
+          href: getPermalink('/admin/tst2'),
+        },
+        {
+          text: 'wp',
+          href: getPermalink('/admin/wp'),
+        },
+        {
+          text: 'diagr',
+          href: getPermalink('/admin/diagr'),
+        },
+        {
+          text: 'grapes',
+          href: getPermalink('/admin/grapes'),
         },
       ],
     },
@@ -114,6 +134,10 @@ export const headerData = {
           href: getPermalink('get-started-website-with-astro-tailwind-css', 'post'),
         },
         {
+          text: 'privacy',
+          href: getPermalink('privacy', 'post'),
+        },
+        {
           text: 'Статьи (с MDX)',
           href: getPermalink('markdown-elements-demo-post', 'post'),
         },
@@ -132,7 +156,7 @@ export const headerData = {
       href: '#',
     },
   ],
-  actions: [{ text: 'Загрузить', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
+  actions: [{ text: 'river', href: 'https://river.sputnik-germes.ru/', target: '_blank' }],
 };
 
 export const footerData = {
@@ -140,58 +164,52 @@ export const footerData = {
     {
       title: 'Продукты',
       links: [
-        { text: 'Features', href: '#' },
-        { text: 'Security', href: '#' },
-        { text: 'Team', href: '#' },
-        { text: 'Enterprise', href: '#' },
-        { text: 'Customer stories', href: '#' },
-        { text: 'Pricing', href: '#' },
-        { text: 'Resources', href: '#' },
+        { text: 'Речные круизы', href: '#' },
+        { text: 'Речные прогулки', href: '#' },
+        { text: 'Морские круизы', href: '#' },
+        { text: 'Туры по России', href: '#' },
+        { text: 'Зарубежные туры', href: '#' },
       ],
     },
     {
-      title: 'Платформы',
+      title: '________________ ',
       links: [
-        { text: 'Developer API', href: '#' },
-        { text: 'Partners', href: '#' },
-        { text: 'Atom', href: '#' },
-        { text: 'Electron', href: '#' },
-        { text: 'AstroWind Desktop', href: '#' },
+        { text: 'Купить билеты', href: '#' },
+        { text: 'Страхование', href: '#' },
+        { text: 'Визы и приглашения', href: '#' },
+        { text: 'Загран паспорта', href: '#' },
       ],
     },
     {
       title: 'Поддержка',
       links: [
-        { text: 'Docs', href: '#' },
-        { text: 'Community Forum', href: '#' },
-        { text: 'Professional Services', href: '#' },
-        { text: 'Skills', href: '#' },
-        { text: 'Status', href: '#' },
+        { text: 'Помощь при бронировании', href: '#' },
+        { text: 'Помощь агентствам', href: '#' },
       ],
     },
     {
       title: 'Компания',
       links: [
-        { text: 'About', href: '#' },
-        { text: 'Blog', href: '#' },
-        { text: 'Careers', href: '#' },
-        { text: 'Press', href: '#' },
-        { text: 'Inclusion', href: '#' },
-        { text: 'Social Impact', href: '#' },
-        { text: 'Shop', href: '#' },
+        { text: 'Новости', href: '/news' },
+        { text: 'О компании', href: '/about' },
+        { text: 'Блог', href: '/blog' },
+        { text: 'Персонал', href: '/personal' },
+        { text: 'Контакты', href: '/contact' },
+        { text: 'Лицензии', href: '#' },
+        { text: 'Вакансии', href: '#' },
       ],
     },
   ],
   secondaryLinks: [
     { text: 'Условия', href: getPermalink('/terms') },
-    { text: 'Политика конфиденциальности', href: getPermalink('/privacy') },
+    { text: 'Политика конфиденциальности', href: getPermalink('/pol') },
   ],
   socialLinks: [
-    { ariaLabel: 'X', icon: 'tabler:brand-x', href: '#' },
-    { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-    { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
+    { ariaLabel: 'VK', icon: 'tabler:brand-vk', href: 'https://vk.com/sputnikgermes' },
+    { ariaLabel: 'TG', icon: 'tabler:brand-telegram', href: 'https://t.me/Puteshestviesnami' },
+  //  { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
+   // { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
-    { ariaLabel: 'Github', icon: 'tabler:brand-github', href: 'https://github.com/onwidget/astrowind' },
   ],
   footNote: `
     <span class="w-5 h-5 md:w-6 md:h-6 md:-mt-0.5 bg-cover mr-1.5 rtl:mr-0 rtl:ml-1.5 float-left rtl:float-right rounded-sm bg-[url(https://onwidget.com/favicon/favicon-32x32.png)]"></span>

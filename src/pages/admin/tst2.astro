@@ -1,0 +1,14 @@
+---
+
+import Layout from '~/layouts/PageLayout.astro';
+import from '@astrojs/svelte'
+import Drawing  from '~/components/Drawing.svelte';
+
+const metadata = {
+  title: 'страницы с promo',
+};
+--- 
+
+<Layout metadata={metadata}>
+  <Drawing client:visible />
+</Layout>

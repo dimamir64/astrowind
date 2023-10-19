@@ -1,6 +1,5 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
-
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
@@ -20,15 +19,14 @@ const metadata = {
 ---
 
 <Layout metadata={metadata}>
-  <!-- Hero Widget ******************* -->
+  <!-- Hero Widget *******************
   <Modal id="dialog" open="Open modal">
     <main slot="main">
-        <p>Some extra content you would like here</p>
-        <hr />
+      <p>Some extra content you would like here</p>
+      <hr />
     </main>
     <button slot="close">Close modal</button>
-</Modal>
-
+  </Modal> -->
 
   <Hero
     actions={[
@@ -45,21 +43,19 @@ const metadata = {
   >
     <Fragment slot="title">
       Раннее бронирование <span class="hidden xl:inline">круизов на 2023 год</span>
-      <span class="text-accent dark:text-white highlight"> </span> 
+      <span class="text-accent dark:text-white highlight"> </span>
     </Fragment>
 
     <Fragment slot="subtitle">
       <span class="hidden sm:inline">
-        <span class="font-semibold">Скидки</span> на раннее бронирование. Специальные условия оплаты</span>
+        <span class="font-semibold">Скидки</span> на раннее бронирование. Специальные условия оплаты</span
+      >
     </Fragment>
   </Hero>
 
   <!-- Note Widget ******************* -->
-
   <Note />
-
   <!-- Features Widget *************** -->
-
   <Features
     id="features"
     tagline="Наши преимущества"
