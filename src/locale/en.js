@@ -1,5 +1,5 @@
 export default {
-    'astrowind': {
-        // 'key': 'value',
-    },
+  astrowind: {
+    // 'key': 'value',
+  },
 };

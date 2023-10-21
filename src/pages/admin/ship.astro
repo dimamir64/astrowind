@@ -7,7 +7,7 @@ import Testimonials from '~/components/widgets/Testimonials.astro';
 import Layout from '~/layouts/PageLayout.astro';
 //import RangeSlider  from '~/components/RangeSlider.svelte';
 const metadata = {
-  title: 'Редактирование теплохода',
+  title: 'Редактирование теплохода', 
 };
 ---
 
@@ -149,7 +149,7 @@ const metadata = {
   import Konva from 'konva';
   import kauta from '../../data/49.json' assert { type: 'json' };
   import cl from '../../data/class-49.json' assert { type: 'json' };
-  import img from '~/assets/image/schema49.jpg';
+  //import img from '~/assets/image/schema49.jpg';
 
   import { Modal } from 'flowbite';
   // select the two elements that we'll work with
@@ -280,6 +280,7 @@ const metadata = {
     sh.moveToBottom();
   };
   imageObj.src = '../schema49.jpg';
+  //imageObj.src = 'src/assets/images/schema491.jpg';
 
   /*
   var rect1 = new Konva.Rect({

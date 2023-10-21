@@ -15,7 +15,7 @@ async function fetchAPI(query, { variables } = {}) {
     console.log(json.errors);
     throw new Error('Failed to fetch API');
   }
- 
+
   return json.data;
 }
 
@@ -45,7 +45,7 @@ export async function getPageBySlug(slug) {
   `);
   return data?.page;
 }
-//(where: {location: PRIMARY}) 
+//(where: {location: PRIMARY})
 export async function getPrimaryMenu() {
   const data = await fetchAPI(`
   {

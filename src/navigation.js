@@ -26,11 +26,11 @@ export const headerData = {
           href: getPermalink('/admin/wp'),
         },
         {
-          text: 'diagr',
+          text: 'Диаграммы',
           href: getPermalink('/admin/diagr'),
         },
         {
-          text: 'grapes',
+          text: 'Редактор страниц',
           href: getPermalink('/admin/grapes'),
         },
       ],
@@ -156,7 +156,7 @@ export const headerData = {
       href: '#',
     },
   ],
-  actions: [{ text: 'river', href: 'https://river.sputnik-germes.ru/', target: '_blank' }],
+  actions: [{ text: 'Загрузить', href: 'https://github.com/onwidget/astrowind', target: '_blank' }],
 };
 
 export const footerData = {
@@ -207,8 +207,8 @@ export const footerData = {
   socialLinks: [
     { ariaLabel: 'VK', icon: 'tabler:brand-vk', href: 'https://vk.com/sputnikgermes' },
     { ariaLabel: 'TG', icon: 'tabler:brand-telegram', href: 'https://t.me/Puteshestviesnami' },
-  //  { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
-   // { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
+    //  { ariaLabel: 'Instagram', icon: 'tabler:brand-instagram', href: '#' },
+    // { ariaLabel: 'Facebook', icon: 'tabler:brand-facebook', href: '#' },
     { ariaLabel: 'RSS', icon: 'tabler:rss', href: getAsset('/rss.xml') },
   ],
   footNote: `
