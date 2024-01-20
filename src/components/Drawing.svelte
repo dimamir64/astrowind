@@ -86,7 +86,7 @@
 	}
 
 	function stopDraw() {
-		if (!isDrawing) {
+		if (!isDrawing) { 
 			return;
 		}
 
