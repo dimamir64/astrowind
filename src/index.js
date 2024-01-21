@@ -1,6 +1,7 @@
 import loadComponents from './components';
 import loadBlocks from './blocks';
 import en from './locale/en';
+//import ru from './locale/ru';
 
 export default (editor, opts = {}) => {
   const options = {
