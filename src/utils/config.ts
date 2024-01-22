@@ -1,4 +1,6 @@
 import fs from 'fs';
+//import fs from 'node:fs/promises'
+
 import yaml from 'js-yaml';
 import merge from 'lodash.merge';
 
@@ -195,6 +197,12 @@ const getAnalytics = () => {
 
   return merge({}, _default, config?.analytics ?? {}) as AnalyticsConfig;
 };
+export const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL
+export const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY
+export const cookiePrefix = import.meta.env.PUBLIC_SUPABASE_COOKIE_PRE
+
+export const accessTokenName = `${import.meta.env.PUBLIC_SUPABASE_COOKIE_PRE}-access-token`
+export const refreshTokenName = `${import.meta.env.PUBLIC_SUPABASE_COOKIE_PRE}-refresh-token`
 
 export const SITE = getSite();
 export const I18N = getI18N();

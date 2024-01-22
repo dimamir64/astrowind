@@ -11,3 +11,14 @@ interface ImportMetaEnv {
   readonly PUBLIC_APPWRITE_COMMENTS_ID: string;
   readonly PUBLIC_APPWRITE_BUCKET_ID: string;
 }
+
+declare namespace App {
+  interface Locals {
+      user: {
+          name: string
+      },
+      welcomeTitle: () => string,
+      orders: Map<string, object>
+  }
+}
+

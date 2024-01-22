@@ -3,29 +3,72 @@ import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
+import { WebForms } from "@astro-utils/forms/forms.js";
+import Context from '@astro-utils/context/Context.astro';
 
 import { headerData, footerData } from '~/navigation';
 
 import type { MetaData } from '~/types';
+function consoleIt(){
+    console.log('Hi');
+}
 
 export interface Props {
   metadata?: MetaData;
+  isLoggedIn: boolean;
 }
 
-const { metadata } = Astro.props;
+const { metadata, isLoggedIn  } = Astro.props;
 ---
 
-<Layout metadata={metadata}>
+<Layout metadata={metadata} isLoggedIn={isLoggedIn}>
   <slot name="announcement">
     <Announcement />
   </slot>
   <slot name="header">
     <Header {...headerData} isSticky showRssFeed showToggleTheme />
   </slot>
-  <main>
+  <WebForms>
+    <slot />
+  </WebForms>
+  <Context title="Context is cool" consoleIt={consoleIt}>
+    <slot/>
+</Context>
+  <style is:global>
+    img {
+      content-visibility: auto;
+    } 
+  </style>
+<main>
     <slot />
   </main>
   <slot name="footer">
     <Footer {...footerData} />
   </slot>
 </Layout>
+<script>
+  import {supabase} from '../utils/supabaseBrowser'
+  import {accessTokenName, refreshTokenName} from '../utils/config'
+
+  const isLoggedIn = document.body.hasAttribute('data-logged-in');
+
+  supabase.auth.onAuthStateChange((event, session) => {
+    if (event === 'SIGNED_OUT' || event === 'USER_UPDATED') {
+      // delete cookies on sign out
+      const expires = new Date(0).toUTCString()
+      document.cookie = `${accessTokenName}=; path=/; expires=${expires}; SameSite=Lax; secure`
+      document.cookie = `${refreshTokenName}=; path=/; expires=${expires}; SameSite=Lax; secure`
+      if (isLoggedIn) {
+          location.reload()
+      }
+    } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
+      const maxAge = 100 * 365 * 24 * 60 * 60 // 100 years, never expires
+      document.cookie = `${accessTokenName}=${session!.access_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure`
+      document.cookie = `${refreshTokenName}=${session!.refresh_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure`
+      if (!isLoggedIn) {
+          location.reload()
+      }
+    }
+  })
+
+</script>

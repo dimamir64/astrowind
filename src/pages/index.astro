@@ -12,6 +12,26 @@ import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import Modal from '~/components/Modal.astro';
 import  '~/styles/search.css';
+import { Bind, BindForm, BButton, BInput } from "@astro-utils/forms/forms.js";
+import { createServerClient, type CookieOptions } from "@supabase/ssr";
+
+const supabase = createServerClient(
+  import.meta.env.PUBLIC_SUPABASE_URL,
+  import.meta.env.PUBLIC_SUPABASE_ANON_KEY,
+  {
+    cookies: {
+      get(key: string) {
+        return Astro.cookies.get(key)?.value;
+      },
+      set(key: string, value: string, options: CookieOptions) {
+        Astro.cookies.set(key, value, options);
+      },
+      remove(key: string, options) {
+        Astro.cookies.delete(key, options);
+      },
+    },
+  }
+);
 
 const metadata = {
   title: 'Поиск и бронирование речных круизов от компании Спутник-Гермес 2024',
@@ -20,19 +40,61 @@ const metadata = {
 let counter = 0
 
 if (Astro.cookies.has("counter")) {
-  const cookie = Astro.cookies.get("counter")
-  counter = cookie.number() + 1
+  const c = Number(Astro.cookies.get("counter"))
+  counter = c + 1
+} else Astro.cookies.set("counter","0")
+
+Astro.cookies.set("counter",String(counter))
+
+type Form1 = {
+    fcounter: number;
 }
+type Form2 = {
+    name: string;
+    age: number;
+}
+const form1 = Bind<Form1>();
+const form2 = Bind<Form2>();
 
-Astro.cookies.set("counter",counter)
-
-
+let showSubmitText: string;
+showSubmitText="--";
+function formSubmit(){
+    showSubmitText = `You name is ${form2.name}, you are ${form2.age} years old. `;
+    form2.age++;
+}
+function incCounter(){
+    form1.fcounter++;
+}
 ---
 
+<script>
+  const supabase = createBrowserClient(
+    import.meta.env.PUBLIC_SUPABASE_URL,
+    import.meta.env.PUBLIC_SUPABASE_ANON_KEY
+  );
+</script>
+
 <Layout metadata={metadata}>
-  <html>
+  <div>
     <h4>Counter = {counter}</h4>
-  </html>
+  </div>
+  <BindForm bind={form1}>
+    Counter: {form1.fcounter}
+
+       <BButton onClick={incCounter}>Increase counter</BButton>
+  </BindForm>
+  <BindForm bind={form2}>
+    {showSubmitText}
+
+    <h4>What you name*</h4>
+    <BInput type="text" name="name" maxlength={20} />required
+
+    <h4>Enter age*</h4>
+    <BInput type="int" name="age" min={0} />required
+
+    <BButton onClick={formSubmit} >Submit</BButton>whenFormOK
+</BindForm>
+
     <!-- Hero Widget *******************
   <Modal id="dialog" open="Open modal">
     <main slot="main">

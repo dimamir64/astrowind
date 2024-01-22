@@ -13,6 +13,8 @@
     "lint:eslint": "eslint . --ext .js,.ts,.astro"
   },
   "dependencies": {
+    "@astro-utils/context": "^1.1.8",
+    "@astro-utils/express-endpoints": "^2.1.0",
     "@astro-utils/forms": "^3.3.0",
     "@astrojs/internal-helpers": "^0.2.1",
     "@astrojs/node": "^8.0.0",
@@ -24,6 +26,8 @@
     "@astrolib/seo": "^1.0.0-beta.5",
     "@fontsource-variable/inter": "latast6",
     "@grapesjs/react": "latast",
+    "@supabase/ssr": "^0.0.10",
+    "@supabase/supabase-js": "^2.39.3",
     "@types/react": "latast",
     "@types/react-dom": "latast",
     "@unpic/svelte": "latast",
@@ -31,6 +35,7 @@
     "astro-compressor": "latast",
     "astro-icon": "latast",
     "astro-remote": "^0.2.4",
+    "astro-supabase": "^0.0.2",
     "cookie": "^0.6.0",
     "d3": "^7.8.5",
     "d3-sankey": "^0.12.3",
@@ -78,7 +83,8 @@
     "tailwind-merge": "latast",
     "tailwindcss": "latast",
     "tsx": "latast",
-    "typescript": "latast"
+    "typescript": "latast",
+    "vite-plugin-node-polyfills": "^0.19.0"
   },
   "engines": {
     "node": ">=18.14.1"

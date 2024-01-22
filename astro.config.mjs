@@ -12,11 +12,19 @@ import tasks from './src/utils/tasks';
 import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs';
 import { ANALYTICS, SITE } from './src/utils/config.ts';
 import compressor from 'astro-compressor';
+import formDebug from "@astro-utils/forms/dist/integration.js";
+import { loadEnv } from "vite";
+import supabase from "astro-supabase";
+import { nodePolyfills } from 'vite-plugin-node-polyfills'
 //import formDebug from "@astro-utils/forms/dist/integration.js";
 import node from "@astrojs/node";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const whenExternalScripts = (items = []) => ANALYTICS.vendors.googleAnalytics.id && ANALYTICS.vendors.googleAnalytics.partytown ? Array.isArray(items) ? items.map(item => item()) : [items()] : [];
-
+const { SUPABASE_URL, SUPABASE_ANON_KEY } = loadEnv(
+  "",
+  process.cwd(),
+  "SUPABASE",
+);
 
 // https://astro.build/config
 export default defineConfig({
@@ -28,7 +36,11 @@ export default defineConfig({
   integrations: [tailwind({
     applyBaseStyles: false
   }), sitemap(),
-  //formDebug(),
+  supabase({
+    supabaseKey: SUPABASE_ANON_KEY,
+    supabaseUrl: SUPABASE_URL,
+  }),
+  formDebug,
   mdx(), react({
     include: ['**/react/*']
   }), icon({
@@ -61,9 +73,32 @@ export default defineConfig({
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src')
-      }
-    }
-  },
+      }      
+    },
+    plugins: [
+      nodePolyfills({
+        // To add only specific polyfills, add them here. If no option is passed, adds all polyfills
+        include: ['path'],
+        // To exclude specific polyfills, add them to this list. Note: if include is provided, this has no effect
+        exclude: [
+          'http', // Excludes the polyfill for `http` and `node:http`.
+        ],
+        // Whether to polyfill specific globals.
+        globals: {
+          Buffer: true, // can also be 'build', 'dev', or false
+          global: true,
+          process: true,
+        },
+        // Override the default polyfills for specific modules.
+        overrides: {
+          // Since `fs` is not supported in browsers, we can use the `memfs` package to polyfill it.
+          fs: 'memfs',
+        },
+        // Whether to polyfill `node:` protocol imports.
+        protocolImports: true,
+      }),
+    ],
+    },
   adapter: node({
     mode: "standalone"
   })
