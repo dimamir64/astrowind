@@ -39,8 +39,8 @@ export default defineConfig({
     defaultLocale: "ru",
     locales: ["en", "ru"],
   },
-  output: 'server',
-  //outDir: 'K:/old_river/tmp/html',
+  output: 'static',
+  //outDir: 'K:/old_river/tmp/html',  server
   integrations: [tailwind({
     applyBaseStyles: false
   }), matomo({
