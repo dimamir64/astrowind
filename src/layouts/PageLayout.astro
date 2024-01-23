@@ -3,8 +3,6 @@ import Layout from '~/layouts/Layout.astro';
 import Header from '~/components/widgets/Header.astro';
 import Footer from '~/components/widgets/Footer.astro';
 import Announcement from '~/components/widgets/Announcement.astro';
-import { WebForms } from "@astro-utils/forms/forms.js";
-import Context from '@astro-utils/context/Context.astro';
 
 import { headerData, footerData } from '~/navigation';
 
@@ -28,12 +26,6 @@ const { metadata, isLoggedIn  } = Astro.props;
   <slot name="header">
     <Header {...headerData} isSticky showRssFeed showToggleTheme />
   </slot>
-  <WebForms>
-    <slot />
-  </WebForms>
-  <Context title="Context is cool" consoleIt={consoleIt}>
-    <slot/>
-</Context>
   <style is:global>
     img {
       content-visibility: auto;

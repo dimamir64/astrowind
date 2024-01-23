@@ -7,7 +7,7 @@ import Testimonials from '~/components/widgets/Testimonials.astro';
 import Layout from '~/layouts/PageLayout.astro';
 //import RangeSlider  from '~/components/RangeSlider.svelte';
 const metadata = {
-  title: 'Редактирование теплохода', 
+  title: 'Редактирование теплохода',
 };
 ---
 
@@ -44,16 +44,15 @@ const metadata = {
     class="text-gray-900 bg-gradient-to-r from-teal-200 to-lime-200 hover:bg-gradient-to-l
   hover:from-teal-200 hover:to-lime-200 focus:ring-4 focus:outline-none focus:ring-lime-200 dark:focus:ring-teal-700
   font-medium rounded-lg text-sm px-2 py-1 text-center mr-1 mb-1"
-    >-->0<--</button
   >
+  </button>
   <button
     id="savejson"
     type="button"
     class="text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200
   hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium
   rounded-lg text-sm px-2 py-1 text-center mr-1 mb-1"
-    >Сохранить</button
-  >
+    >Сохранить</button>
   <!--<RangeSlider values={[50]} pips /> -->
   <!--    Main modal -->
   <div
@@ -151,16 +150,16 @@ const metadata = {
   import cl from '../../data/class-49.json' assert { type: 'json' };
   //import img from '~/assets/image/schema49.jpg';
 
-  import { Modal } from 'flowbite';
+  //import { Modal } from 'flowbite';
   // select the two elements that we'll work with
   const $buttonElement: HTMLElement | null = document.querySelector('#button');
-  const $modalElement: HTMLElement | null = document.querySelector('#defaultModal');
+  //const $modalElement: HTMLElement | null = document.querySelector('#defaultModal');
   // create a new modal component
-  const modal = new Modal($modalElement);
-  console.log(modal);
+  //  const modal = new Modal($modalElement);
+  //console.log(modal);
   // toggle the visibility of the modal when clicking on the button
   if ($buttonElement) {
-    $buttonElement.addEventListener('click', () => modal.toggle());
+    //$buttonElement.addEventListener('click', () => modal.toggle());
   }
   var viewportwidth;
   var viewportheight;
@@ -198,7 +197,7 @@ const metadata = {
   });
 
   function fitStageIntoParentContainer() {
-    var container = document.querySelector('#stage-parent'); 
+    var container = document.querySelector('#stage-parent');
     // now we need to fit stage into parent container
     var containerWidth = container.offsetWidth;
     // but we also make the full scene visible
@@ -279,7 +278,7 @@ const metadata = {
     layer0.add(sh);
     sh.moveToBottom();
   };
-  imageObj.src = '../schema49.jpg';
+  imageObj.src = '/assets/images/schema49.jpg';
   //imageObj.src = 'src/assets/images/schema491.jpg';
 
   /*
@@ -343,8 +342,8 @@ const metadata = {
     y2 = stage.getPointerPosition().y / scale;
 
     selectionRectangle.setAttrs({
-      x: Math.min(x1, x2)-newPos.x/scale,
-      y: Math.min(y1, y2)-newPos.y/scale,
+      x: Math.min(x1, x2) - newPos.x / scale,
+      y: Math.min(y1, y2) - newPos.y / scale,
       width: Math.abs(x2 - x1),
       height: Math.abs(y2 - y1),
     });

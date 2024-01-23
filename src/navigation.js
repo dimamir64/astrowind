@@ -5,13 +5,13 @@ export const headerData = {
     {
       text: 'Админка',
       links: [
-        { text: 'Теплоход', href: getPermalink('/admin/ship'), },
+        { text: 'Теплоход', href: getPermalink('/admin/shipsh'), },
         //{ text: 'Тест', href: getPermalink('/admin/sankey/tst'), },
         //{ text: 'Стр', href: getPermalink('/admin/tst1'), },
         //{ text: 'Стр2', href: getPermalink('/admin/tst2'), },
-        //{ text: 'wp', href: getPermalink('/admin/wp'), },
         { text: 'Диаграммы', href: getPermalink('/admin/diagr'), },
         { text: 'Редактор страниц', href: getPermalink('/admin/grapes'), },
+        { text: 'wp', href: getPermalink('/dyn/wp'), },
       ],
     },
     {

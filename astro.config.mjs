@@ -12,36 +12,54 @@ import tasks from './src/utils/tasks';
 import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs';
 import { ANALYTICS, SITE } from './src/utils/config.ts';
 import compressor from 'astro-compressor';
-import formDebug from "@astro-utils/forms/dist/integration.js";
 import { loadEnv } from "vite";
+import matomo from 'astro-matomo';
 import supabase from "astro-supabase";
-import { nodePolyfills } from 'vite-plugin-node-polyfills'
+//import { nodePolyfills } from 'vite-plugin-node-polyfills';
+// import spotlightSidecar from '@spotlightjs/sidecar/vite-plugin';
 //import formDebug from "@astro-utils/forms/dist/integration.js";
 import node from "@astrojs/node";
+//import sentry from "@sentry/astro";
+//import spotlightjs from "@spotlightjs/astro";
+import svelte from "@astrojs/svelte";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const whenExternalScripts = (items = []) => ANALYTICS.vendors.googleAnalytics.id && ANALYTICS.vendors.googleAnalytics.partytown ? Array.isArray(items) ? items.map(item => item()) : [items()] : [];
-const { SUPABASE_URL, SUPABASE_ANON_KEY } = loadEnv(
-  "",
-  process.cwd(),
-  "SUPABASE",
-);
+const {
+  SUPABASE_URL,
+  SUPABASE_ANON_KEY
+} = loadEnv("", process.cwd(), "SUPABASE");
+
 
 // https://astro.build/config
 export default defineConfig({
   site: SITE.site,
   base: SITE.base,
   trailingSlash: SITE.trailingSlash ? 'always' : 'never',
+  i18n: {
+    defaultLocale: "ru",
+    locales: ["en", "ru"],
+  },
   output: 'server',
   //outDir: 'K:/old_river/tmp/html',
   integrations: [tailwind({
     applyBaseStyles: false
-  }), sitemap(),
-  supabase({
+  }), matomo({
+    enabled: true,
+    //import.meta.env.PROD, // Only load in production
+    host: "https://matomo.cons.dm64.ru",
+    setCookieDomain: "*.matomo.cons.dm64.ru",
+    trackerUrl: "/matomo.php",
+    // defaults to matomo.php
+    srcUrl: "/matomo.js",
+    // defaults to matomo.js
+    siteId: 5,
+    heartBeatTimer: 5,
+    disableCookies: true,
+    debug: false
+  }), sitemap(), supabase({
     supabaseKey: SUPABASE_ANON_KEY,
-    supabaseUrl: SUPABASE_URL,
-  }),
-  formDebug,
-  mdx(), react({
+    supabaseUrl: SUPABASE_URL
+  }), mdx(), react({
     include: ['**/react/*']
   }), icon({
     include: {
@@ -65,7 +83,9 @@ export default defineConfig({
     gzip: true,
     brotli: true,
     fileExtensions: ['.css', '.js', '.html', '.xml', '.cjs', '.mjs', '.svg', '.txt']
-  }), partytown()],
+  }), partytown()
+  //sentry(), spotlightjs()
+  , svelte()],
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin]
   },
@@ -73,32 +93,9 @@ export default defineConfig({
     resolve: {
       alias: {
         '~': path.resolve(__dirname, './src')
-      }      
-    },
-    plugins: [
-      nodePolyfills({
-        // To add only specific polyfills, add them here. If no option is passed, adds all polyfills
-        include: ['path'],
-        // To exclude specific polyfills, add them to this list. Note: if include is provided, this has no effect
-        exclude: [
-          'http', // Excludes the polyfill for `http` and `node:http`.
-        ],
-        // Whether to polyfill specific globals.
-        globals: {
-          Buffer: true, // can also be 'build', 'dev', or false
-          global: true,
-          process: true,
-        },
-        // Override the default polyfills for specific modules.
-        overrides: {
-          // Since `fs` is not supported in browsers, we can use the `memfs` package to polyfill it.
-          fs: 'memfs',
-        },
-        // Whether to polyfill `node:` protocol imports.
-        protocolImports: true,
-      }),
-    ],
-    },
+      }
+    }
+  },
   adapter: node({
     mode: "standalone"
   })
