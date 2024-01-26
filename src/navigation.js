@@ -5,13 +5,13 @@ export const headerData = {
     {
       text: 'Админка',
       links: [
-        { text: 'Теплоход', href: getPermalink('/admin/shipsh'), },
+        { text: 'Теплоход', href: getPermalink('/admin/shipsh/'), },
         //{ text: 'Тест', href: getPermalink('/admin/sankey/tst'), },
         //{ text: 'Стр', href: getPermalink('/admin/tst1'), },
         //{ text: 'Стр2', href: getPermalink('/admin/tst2'), },
-        { text: 'Диаграммы', href: getPermalink('/admin/diagr'), },
-        { text: 'Редактор страниц', href: getPermalink('/admin/grapes'), },
-        { text: 'wp', href: getPermalink('/dyn/wp'), },
+        { text: 'Диаграммы', href: getPermalink('/admin/diagr/'), },
+        { text: 'Редактор страниц', href: getPermalink('/admin/grapes/'), },
+        { text: 'wp', href: getPermalink('/dyn/wp/'), },
       ],
     },
     {
@@ -19,7 +19,7 @@ export const headerData = {
       links: [
         {
           text: 'Облачные решения',
-          href: getPermalink('/homes/saas'),
+          href: getPermalink('/homes/saas/'),
         },
         {
           text: 'Стартап',

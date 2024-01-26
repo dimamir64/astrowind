@@ -19,9 +19,9 @@ metadata:
   openGraph:
     site_name: Спутник-Гермес
     images:
-      url: '~/assets/images/default.png'
-      width: 1200
-      height: 628
+      - url: '~/assets/images/default.png'
+        width: 1200
+        height: 628
     type: website
   twitter:
     handle: '@river'

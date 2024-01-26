@@ -21,7 +21,7 @@ import supabase from "astro-supabase";
 import node from "@astrojs/node";
 //import sentry from "@sentry/astro";
 //import spotlightjs from "@spotlightjs/astro";
-import svelte from "@astrojs/svelte";
+//import svelte from "@astrojs/svelte";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const whenExternalScripts = (items = []) => ANALYTICS.vendors.googleAnalytics.id && ANALYTICS.vendors.googleAnalytics.partytown ? Array.isArray(items) ? items.map(item => item()) : [items()] : [];
 const {
@@ -35,15 +35,16 @@ export default defineConfig({
   site: SITE.site,
   base: SITE.base,
   trailingSlash: SITE.trailingSlash ? 'always' : 'never',
-  i18n: {
+  /*i18n: {
     defaultLocale: "ru",
     locales: ["en", "ru"],
-  },
-  output: 'static',
-  //outDir: 'K:/old_river/tmp/html',  server
+  },*/
+  output: 'server',
+  //outDir: 'K:/old_river/tmp/html', static 
   integrations: [tailwind({
     applyBaseStyles: false
-  }), matomo({
+  }),
+  /* matomo({
     enabled: true,
     //import.meta.env.PROD, // Only load in production
     host: "https://matomo.cons.dm64.ru",
@@ -56,7 +57,8 @@ export default defineConfig({
     heartBeatTimer: 5,
     disableCookies: true,
     debug: false
-  }), sitemap(), supabase({
+  }),*/
+   sitemap(), supabase({
     supabaseKey: SUPABASE_ANON_KEY,
     supabaseUrl: SUPABASE_URL
   }), mdx(), react({
@@ -85,7 +87,8 @@ export default defineConfig({
     fileExtensions: ['.css', '.js', '.html', '.xml', '.cjs', '.mjs', '.svg', '.txt']
   }), partytown()
   //sentry(), spotlightjs()
-  , svelte()],
+//  , svelte()
+],
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin]
   },
