@@ -1,3 +1,7 @@
+@import "~/styles/formio.full.min.css";
+@import "~/styles/bootstrap-icons.css";
+@import  "~/styles/bootstrap.min.css";
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

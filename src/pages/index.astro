@@ -11,6 +11,8 @@ import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
 import SvelteCounter from '../components/svelte/SvelteCounter.svelte';
+//import FindForm from '../components/svelte/FindForm.svelte';
+import FindF from '../components/FindF.astro'; 
 import  '~/styles/search.css';
 import '../styles/global.css';
 //import  '~/styles/riv1.css';
@@ -63,6 +65,7 @@ try {
   Sentry.captureException(e);
 }
 }
+/*
 const show=false;
 let personPromise;
 let factPromise;
@@ -76,30 +79,33 @@ if (show){
   .then(factData => factData.fact);
 } 
 else {
-}
+}*/
 ---
 
-<script>
+{/* <script>
   const supabase = createBrowseClient( //createBrowserClient
     import.meta.env.PUBLIC_SUPABASE_URL,
     import.meta.env.PUBLIC_SUPABASE_ANON_KEY
   );
 </script>
-
-<Layout metadata={metadata}>
-  <div>
-    <h4>Counter = {counter}</h4>
-    <br>
     {show &&
       <h2>A name</h2>
       <code>{personPromise}</code>
       <h2>A fact</h2>
       <p>{factPromise}</p>
     }
+*/}
+<Layout metadata={metadata}>
+  <div>
+    <h4>Counter = {counter}</h4>
   </div>
-  <SvelteCounter client:visible>
-    <h1>Hello from Svelte!</h1>
+   <SvelteCounter  client:idle  >
+    <h1>Привет из Svelte!</h1>
   </SvelteCounter>
+  <FindF  client:idle >
+    <h1>Форма поиска из Svelte!</h1>
+  </FindF>
+
   {/*
     <!-- Hero Widget *******************
   <Modal id="dialog" open="Open modal">
