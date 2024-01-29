@@ -22,15 +22,15 @@ import node from "@astrojs/node";
 //import sentry from "@sentry/astro";
 //import spotlightjs from "@spotlightjs/astro";
 //import svelte from "@astrojs/svelte";
+import sentry from "@sentry/astro";
+import svelte from "@astrojs/svelte";
+//import supabaseIntegration from "astro-supabase";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const whenExternalScripts = (items = []) => ANALYTICS.vendors.googleAnalytics.id && ANALYTICS.vendors.googleAnalytics.partytown ? Array.isArray(items) ? items.map(item => item()) : [items()] : [];
-const {
-  SUPABASE_URL,
-  SUPABASE_ANON_KEY
-} = loadEnv("", process.cwd(), "SUPABASE");
+//console.log(loadEnv("", process.cwd(), "PUBLIC"));
+const {  PUBLIC_SUPABASE_URL,  PUBLIC_SUPABASE_ANON_KEY} =loadEnv("", process.cwd(), "PUBLIC");
 
-
-// https://astro.build/config
+console.log('SUPABASE_URL, SUPABASE_ANON_KEY ',PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY );
 export default defineConfig({
   site: SITE.site,
   base: SITE.base,
@@ -44,7 +44,7 @@ export default defineConfig({
   integrations: [tailwind({
     applyBaseStyles: false
   }),
-  /* matomo({
+   matomo({
     enabled: true,
     //import.meta.env.PROD, // Only load in production
     host: "https://matomo.cons.dm64.ru",
@@ -57,11 +57,10 @@ export default defineConfig({
     heartBeatTimer: 5,
     disableCookies: true,
     debug: false
-  }),*/
-   sitemap(), supabase({
-    supabaseKey: SUPABASE_ANON_KEY,
-    supabaseUrl: SUPABASE_URL
-  }), mdx(), react({
+  }),
+  sitemap(), 
+  supabase({    supabaseUrl: PUBLIC_SUPABASE_URL,    supabaseKey: PUBLIC_SUPABASE_ANON_KEY  }), 
+  mdx(), react({
     include: ['**/react/*']
   }), icon({
     include: {
@@ -87,7 +86,15 @@ export default defineConfig({
     fileExtensions: ['.css', '.js', '.html', '.xml', '.cjs', '.mjs', '.svg', '.txt']
   }), partytown()
   //sentry(), spotlightjs()
-//  , svelte()
+  //  , svelte()
+  , sentry({
+    dsn: "https://5ee778cedab65f2550791689e3290660@o4506636469075968.ingest.sentry.io/4506636472418304",
+    sourceMapsUploadOptions: {
+      project: "javascript-astro",
+      authToken: process.env.SENTRY_AUTH_TOKEN
+    }
+  }), svelte(), 
+  //supabaseIntegration({    supabaseUrl: SUPABASE_URL,    supabaseKey: SUPABASE_ANON_KEY  })
 ],
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin]

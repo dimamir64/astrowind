@@ -1,0 +1,15 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Регистрация">
+  <h1>Регистрация нового пользователя</h1>
+  <p>Уже есть аккаунт? <a href="/signin">Войти</a></p>
+  <form action="/api/auth/register" method="post">
+    <label for="email" for="email">Email</label>
+    <input type="email" name="email" id="email" />
+    <label for="password">Пароль</label>
+    <input type="password" name="password" id="password" />
+    <button type="submit">Зарегистрировать</button>
+  </form>
+</Layout>

@@ -1,6 +1,6 @@
 import loadComponents from './components';
 import loadBlocks from './blocks';
-import en from './locale/en';
+import ru from './locale/ru';
 //import ru from './locale/ru';
 
 export default (editor, opts = {}) => {
@@ -19,7 +19,7 @@ export default (editor, opts = {}) => {
   // Load i18n files
   editor.I18n &&
     editor.I18n.addMessages({
-      en,
+      ru,
       ...options.i18n,
     });
 
