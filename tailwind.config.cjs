@@ -2,6 +2,8 @@ const defaultTheme = require('tailwindcss/defaultTheme');
 
 module.exports = {
   content: ['./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}'],
+  //prefix: "",
+  //important: true,
   theme: {
     extend: {
       colors: {

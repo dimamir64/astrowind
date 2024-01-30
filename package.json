@@ -23,6 +23,7 @@
     "@astrolib/analytics": "^0.5.0",
     "@astrolib/seo": "1.0.0-beta.5",
     "@fontsource-variable/inter": "^5.0.16",
+    "@formio/bootstrap": "3.0.0-rc.6",
     "@formio/js": "5.0.0-rc.39",
     "@grapesjs/react": "^1.0.0",
     "@sentry/astro": "^7.98.0",

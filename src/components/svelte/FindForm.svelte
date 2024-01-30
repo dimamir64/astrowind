@@ -1,13 +1,27 @@
 <script>
     import { onMount } from "svelte";
-    import { Formio } from "formiojs";
+    import bootstrap4 from '@formio/bootstrap/bootstrap4';
+import { Formio } from 'formiojs';
+Formio.use(bootstrap4);
+Formio.Templates.framework = "bootstrap4";
+  //  import options from "./lib/options.json";
    // import schema from "~/lib/schema.json";
+    import f from "~/lib/f.html";
+   //Formio.use(bulma);
+      let form;
+      let formio; 
+  let selected_language = "ru";
 
-   let form;
+  $: {
+    if (formio && selected_language) {
+      formio.language = selected_language;
+    }
+  }
 
     onMount(() => {
       if (form) {
         Formio.createForm(form, 'http://cons.ud63.online:3001/find/tur').then((formioInstance) => {
+            //form=fetch("../lib/f.html");
           formio = formioInstance;
         });
       }
