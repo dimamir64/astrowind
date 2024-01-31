@@ -1,5 +1,6 @@
 ---
 import Layout from '~/layouts/PageLayout.astro';
+
 import Hero from '~/components/widgets/Hero.astro';
 import Note from '~/components/widgets/Note.astro';
 import Features from '~/components/widgets/Features.astro';
@@ -10,8 +11,8 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+
 import SvelteCounter from '../components/svelte/SvelteCounter.svelte';
-//import FindForm from '../components/svelte/FindForm.svelte';
 import FindFrm from '../components/FindFrm.astro';
 import '~/styles/search.css';
 import '../styles/global.css';
@@ -19,7 +20,7 @@ import '../styles/global.css';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import * as Sentry from '@sentry/node';
 import HTMLSnippet from '~/html/ht1.html';
-import { IncompatibleDescriptorOptions } from 'node_modules/astro/dist/core/errors/errors-data';
+/*import { IncompatibleDescriptorOptions } from 'node_modules/astro/dist/core/errors/errors-data';
 
 const supabase = createServerClient(import.meta.env.PUBLIC_SUPABASE_URL, import.meta.env.PUBLIC_SUPABASE_ANON_KEY, {
   cookies: {
@@ -33,7 +34,7 @@ const supabase = createServerClient(import.meta.env.PUBLIC_SUPABASE_URL, import.
       Astro.cookies.delete(key, options);
     },
   },
-});
+});*/
 
 function is_number(x) {
   return x === x + 0;

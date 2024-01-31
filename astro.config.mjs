@@ -1,41 +1,44 @@
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { defineConfig } from 'astro/config';
+
+import { defineConfig, squooshImageService } from 'astro/config';
+
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import mdx from '@astrojs/mdx';
 import partytown from '@astrojs/partytown';
-import compress from 'astro-compress';
-import react from '@astrojs/react';
 import icon from 'astro-icon';
+import compress from 'astro-compress';
 import tasks from './src/utils/tasks';
-import { readingTimeRemarkPlugin } from './src/utils/frontmatter.mjs';
+import { readingTimeRemarkPlugin, responsiveTablesRehypePlugin } from './src/utils/frontmatter.mjs';
+
 import { ANALYTICS, SITE } from './src/utils/config.ts';
-import compressor from 'astro-compressor';
-import { loadEnv } from 'vite';
-import matomo from 'astro-matomo';
-import supabase from 'astro-supabase';
-//import { nodePolyfills } from 'vite-plugin-node-polyfills';
-// import spotlightSidecar from '@spotlightjs/sidecar/vite-plugin';
-//import formDebug from "@astro-utils/forms/dist/integration.js";
-import node from '@astrojs/node';
-//import sentry from "@sentry/astro";
-//import spotlightjs from "@spotlightjs/astro";
-//import svelte from "@astrojs/svelte";
-import sentry from '@sentry/astro';
-import svelte from '@astrojs/svelte';
-//import supabaseIntegration from "astro-supabase";
+
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
 const whenExternalScripts = (items = []) =>
   ANALYTICS.vendors.googleAnalytics.id && ANALYTICS.vendors.googleAnalytics.partytown
     ? Array.isArray(items)
       ? items.map((item) => item())
       : [items()]
     : [];
-//console.log(loadEnv("", process.cwd(), "PUBLIC"));
-const { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } = loadEnv('', process.cwd(), 'PUBLIC');
 
-console.log('SUPABASE_URL, SUPABASE_ANON_KEY ', PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
+import node from '@astrojs/node';
+import react from '@astrojs/react';
+import compressor from 'astro-compressor';
+import matomo from 'astro-matomo';
+import supabase from 'astro-supabase';
+//import sentry from "@sentry/astro";
+//import spotlightjs from "@spotlightjs/astro";
+//import svelte from "@astrojs/svelte";
+import sentry from '@sentry/astro';
+import svelte from '@astrojs/svelte';
+//import supabaseIntegration from "astro-supabase";
+//console.log(loadEnv("", process.cwd(), "PUBLIC"));
+import { loadEnv } from 'vite';
+const { PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY } = loadEnv('', process.cwd(), 'PUBLIC');
+//console.log('SUPABASE_URL, SUPABASE_ANON_KEY ', PUBLIC_SUPABASE_URL, PUBLIC_SUPABASE_ANON_KEY);
+
 export default defineConfig({
   site: SITE.site,
   base: SITE.base,
@@ -44,8 +47,12 @@ export default defineConfig({
     defaultLocale: "ru",
     locales: ["en", "ru"],
   },*/
-  output: 'server',
-  //outDir: 'K:/old_river/tmp/html', static
+  server: {
+    host: 'localhost',
+    port: parseInt(process.env.PORT, 10) || 3000
+  },
+  output: 'static',
+  //outDir: 'K:/old_river/tmp/html',server  hybrid
   integrations: [
     tailwind({
       applyBaseStyles: false,
@@ -89,18 +96,18 @@ export default defineConfig({
     compress({
       CSS: true,
       HTML: {
-        removeAttributeQuotes: true,
+        'html-minifier-terser': {
+          removeAttributeQuotes: false,
+        },
       },
-      Image: true,
+      Image: false,
       JavaScript: true,
-      SVG: true,
+      SVG: false,
       Logger: 1,
     }),
     ...whenExternalScripts(() =>
       partytown({
-        config: {
-          forward: ['dataLayer.push'],
-        },
+        config: { forward: ['dataLayer.push'] },
       })
     ),
     tasks(),
@@ -122,8 +129,13 @@ export default defineConfig({
     svelte(),
     //supabaseIntegration({    supabaseUrl: SUPABASE_URL,    supabaseKey: SUPABASE_ANON_KEY  })
   ],
+  image: {
+    service: squooshImageService(),
+  },
+
   markdown: {
     remarkPlugins: [readingTimeRemarkPlugin],
+    rehypePlugins: [responsiveTablesRehypePlugin],
   },
   vite: {
     resolve: {

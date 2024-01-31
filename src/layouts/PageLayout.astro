@@ -8,6 +8,7 @@ import Announcement from '~/components/widgets/Announcement.astro';
 import { headerData, footerData } from '~/navigation';
 
 import type { MetaData } from '~/types';
+
 function consoleIt() {
   console.log('Hi');
 }
@@ -20,20 +21,13 @@ export interface Props {
 const { metadata, isLoggedIn } = Astro.props;
 ---
 
-{/*}<ViewTransitions />*/}
-
-<Layout metadata={metadata} isLoggedIn={isLoggedIn}>
+<Layout metadata={metadata}>
   <slot name="announcement">
     <Announcement />
   </slot>
   <slot name="header">
     <Header {...headerData} isSticky showRssFeed showToggleTheme />
   </slot>
-  <style is:global>
-    img {
-      content-visibility: auto;
-    }
-  </style>
   <main>
     <slot />
   </main>
@@ -41,6 +35,13 @@ const { metadata, isLoggedIn } = Astro.props;
     <Footer {...footerData} />
   </slot>
 </Layout>
+{/*
+<style is:global>
+    img {
+      content-visibility: auto;
+    }
+  </style>
+ */}
 <script>
   import { supabase } from '../utils/supabaseBrowser';
   import { accessTokenName, refreshTokenName } from '../utils/config';

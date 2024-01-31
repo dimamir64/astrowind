@@ -2,7 +2,10 @@
     import { onMount } from "svelte";
 //    import 'bootstrap/dist/css/bootstrap.css'
     //import bootstrap4 from '@formio/bootstrap/bootstrap4';
-    //import "~/styles/formio.full.min.css";
+//    import "./bootstrap-icons.css";
+//    import  "./bootstrap53.min.css";
+//@import './formio.full.min.css';
+//    import "~/styles/formio.full.min.css";
 import { Formio } from 'formiojs';
       let form;
       let formio; 
