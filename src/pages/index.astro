@@ -15,7 +15,7 @@ import CallToAction from '~/components/widgets/CallToAction.astro';
 import SvelteCounter from '../components/svelte/SvelteCounter.svelte';
 import FindFrm from '../components/FindFrm.astro';
 import '~/styles/search.css';
-import '../styles/global.css';
+import '~/styles/global.css';
 //import  '~/styles/riv1.css';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import * as Sentry from '@sentry/node';
@@ -105,6 +105,11 @@ else {
   <SvelteCounter client:idle>
     <h1>Привет из Svelte!</h1>
   </SvelteCounter>
+  {false &&
+  <FindFrm client:idle>
+    <h1>Форма поиска из Svelte!</h1>
+  </FindFrm>
+}
 {
     /*  
 
@@ -151,12 +156,9 @@ else {
       >
     </Fragment>
   </Hero>
-  <FindFrm client:idle>
-    <h1>Форма поиска из Svelte!</h1>
-  </FindFrm>
-
+{false &&
   <HTMLSnippet />
-
+}
   <Content
     id="features"
     isReversed

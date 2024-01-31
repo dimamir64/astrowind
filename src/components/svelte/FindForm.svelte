@@ -6,6 +6,10 @@
 //    import  "./bootstrap53.min.css";
 //@import './formio.full.min.css';
 //    import "~/styles/formio.full.min.css";
+import "~/styles/bootstrap-icons.css";
+import  "~/styles/bootstrap53.min.css";
+import '~/styles/formio.full.min.css';
+
 import { Formio } from 'formiojs';
       let form;
       let formio; 
@@ -34,7 +38,7 @@ import { Formio } from 'formiojs';
     </div>
       
 <style >
-  
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;

@@ -51,8 +51,8 @@ export default defineConfig({
     host: 'localhost',
     port: parseInt(process.env.PORT, 10) || 3000
   },
-  output: 'static',
-  //outDir: 'K:/old_river/tmp/html',server  hybrid
+  output: 'server',
+  //outDir: 'K:/old_river/tmp/html', static hybrid
   integrations: [
     tailwind({
       applyBaseStyles: false,
