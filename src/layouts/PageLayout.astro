@@ -8,8 +8,8 @@ import Announcement from '~/components/widgets/Announcement.astro';
 import { headerData, footerData } from '~/navigation';
 
 import type { MetaData } from '~/types';
-function consoleIt(){
-    console.log('Hi');
+function consoleIt() {
+  console.log('Hi');
 }
 
 export interface Props {
@@ -17,8 +17,9 @@ export interface Props {
   isLoggedIn: boolean;
 }
 
-const { metadata, isLoggedIn  } = Astro.props;
+const { metadata, isLoggedIn } = Astro.props;
 ---
+
 {/*}<ViewTransitions />*/}
 
 <Layout metadata={metadata} isLoggedIn={isLoggedIn}>
@@ -31,9 +32,9 @@ const { metadata, isLoggedIn  } = Astro.props;
   <style is:global>
     img {
       content-visibility: auto;
-    } 
+    }
   </style>
-<main>
+  <main>
     <slot />
   </main>
   <slot name="footer">
@@ -41,28 +42,27 @@ const { metadata, isLoggedIn  } = Astro.props;
   </slot>
 </Layout>
 <script>
-  import {supabase} from '../utils/supabaseBrowser'
-  import {accessTokenName, refreshTokenName} from '../utils/config'
+  import { supabase } from '../utils/supabaseBrowser';
+  import { accessTokenName, refreshTokenName } from '../utils/config';
 
   const isLoggedIn = document.body.hasAttribute('data-logged-in');
 
   supabase.auth.onAuthStateChange((event, session) => {
     if (event === 'SIGNED_OUT' || event === 'USER_UPDATED') {
       // delete cookies on sign out
-      const expires = new Date(0).toUTCString()
-      document.cookie = `${accessTokenName}=; path=/; expires=${expires}; SameSite=Lax; secure`
-      document.cookie = `${refreshTokenName}=; path=/; expires=${expires}; SameSite=Lax; secure`
+      const expires = new Date(0).toUTCString();
+      document.cookie = `${accessTokenName}=; path=/; expires=${expires}; SameSite=Lax; secure`;
+      document.cookie = `${refreshTokenName}=; path=/; expires=${expires}; SameSite=Lax; secure`;
       if (isLoggedIn) {
-          location.reload()
+        location.reload();
       }
     } else if (event === 'SIGNED_IN' || event === 'TOKEN_REFRESHED') {
-      const maxAge = 100 * 365 * 24 * 60 * 60 // 100 years, never expires
-      document.cookie = `${accessTokenName}=${session!.access_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure`
-      document.cookie = `${refreshTokenName}=${session!.refresh_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure`
+      const maxAge = 100 * 365 * 24 * 60 * 60; // 100 years, never expires
+      document.cookie = `${accessTokenName}=${session!.access_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure`;
+      document.cookie = `${refreshTokenName}=${session!.refresh_token}; path=/; max-age=${maxAge}; SameSite=Lax; secure`;
       if (!isLoggedIn) {
-          location.reload()
+        location.reload();
       }
     }
-  })
-
+  });
 </script>

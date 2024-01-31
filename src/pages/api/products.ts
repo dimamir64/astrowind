@@ -1,5 +1,5 @@
 import { products } from '../../models/db';
 
 export function GET() {
-	return new Response(JSON.stringify(products));
+  return new Response(JSON.stringify(products));
 }

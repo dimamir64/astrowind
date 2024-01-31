@@ -194,14 +194,14 @@ var app = (function () {
       e === n
         ? ((u = e.first), f--, h--)
         : v.has(l)
-        ? !s.has(r) || b.has(r)
-          ? x(e)
-          : y.has(l)
-          ? f--
-          : $.get(r) > $.get(l)
-          ? (y.add(r), x(e))
-          : (b.add(l), f--)
-        : (i(n, s), f--);
+          ? !s.has(r) || b.has(r)
+            ? x(e)
+            : y.has(l)
+              ? f--
+              : $.get(r) > $.get(l)
+                ? (y.add(r), x(e))
+                : (b.add(l), f--)
+          : (i(n, s), f--);
     }
     for (; f--; ) {
       const e = t[f];

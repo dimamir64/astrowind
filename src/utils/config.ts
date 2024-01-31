@@ -1,7 +1,7 @@
 //import fs from 'fs';
 import yaml from 'js-yaml';
 import merge from 'lodash.merge';
-const configyml =`
+const configyml = `
 site:
   name: Спутник-Гермес
   site: 'https://hk.cons.ud63.online/'
@@ -94,7 +94,7 @@ ui:
 `;
 
 //const config = yaml.load(fs.readFileSync('src/config.yaml', 'utf8')) as {
-  //const config = yaml.load(fs.readFileSync(configyml) as {
+//const config = yaml.load(fs.readFileSync(configyml) as {
 
 import type { MetaData } from '~/types';
 
@@ -298,9 +298,9 @@ export const APP_BLOG = getAppBlog();
 export const UI = getUI();
 export const ANALYTICS = getAnalytics();
 
-export const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL
-export const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY
-export const cookiePrefix = import.meta.env.PUBLIC_SUPABASE_COOKIE_PRE
+export const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+export const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+export const cookiePrefix = import.meta.env.PUBLIC_SUPABASE_COOKIE_PRE;
 
-export const accessTokenName = `${import.meta.env.PUBLIC_SUPABASE_COOKIE_PRE}-access-token`
-export const refreshTokenName = `${import.meta.env.PUBLIC_SUPABASE_COOKIE_PRE}-refresh-token`
+export const accessTokenName = `${import.meta.env.PUBLIC_SUPABASE_COOKIE_PRE}-access-token`;
+export const refreshTokenName = `${import.meta.env.PUBLIC_SUPABASE_COOKIE_PRE}-refresh-token`;

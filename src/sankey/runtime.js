@@ -90,18 +90,18 @@ function y(n, a, o, i) {
       ? ((s = `Map(${n.size})`), (c = _))
       : ((s = 'Map()'), (c = T))
     : n instanceof Set
-    ? n instanceof n.constructor
-      ? ((s = `Set(${n.size})`), (c = g))
-      : ((s = 'Set()'), (c = T))
-    : f
-    ? ((s = `${n.constructor.name}(${n.length})`), (c = C))
-    : (u = h(n))
-    ? ((s = `Immutable.${u.name}${'Record' === u.name ? '' : `(${n.size})`}`),
-      (f = u.arrayish),
-      (c = u.arrayish ? N : u.setish ? E : A))
-    : i
-    ? ((s = d(n)), (c = x))
-    : ((s = d(n)), (c = T));
+      ? n instanceof n.constructor
+        ? ((s = `Set(${n.size})`), (c = g))
+        : ((s = 'Set()'), (c = T))
+      : f
+        ? ((s = `${n.constructor.name}(${n.length})`), (c = C))
+        : (u = h(n))
+          ? ((s = `Immutable.${u.name}${'Record' === u.name ? '' : `(${n.size})`}`),
+            (f = u.arrayish),
+            (c = u.arrayish ? N : u.setish ? E : A))
+          : i
+            ? ((s = d(n)), (c = x))
+            : ((s = d(n)), (c = T));
   const p = document.createElement('span');
   (p.className = 'observablehq--expanded'), o && p.appendChild(r(o));
   const m = p.appendChild(document.createElement('a'));
@@ -219,16 +219,16 @@ function L(e, n, a, o) {
         ? ((i = `Map(${e.size})`), (s = k))
         : ((i = 'Map()'), (s = U))
       : e instanceof Set
-      ? e instanceof e.constructor
-        ? ((i = `Set(${e.size})`), (s = M))
-        : ((i = 'Set()'), (s = U))
-      : u
-      ? ((i = `${e.constructor.name}(${e.length})`), (s = R))
-      : (l = h(e))
-      ? ((i = `Immutable.${l.name}${'Record' === l.name ? '' : `(${e.size})`}`),
-        (u = l.arrayish),
-        (s = l.arrayish ? P : l.setish ? I : D))
-      : ((i = d(e)), (s = U)),
+        ? e instanceof e.constructor
+          ? ((i = `Set(${e.size})`), (s = M))
+          : ((i = 'Set()'), (s = U))
+        : u
+          ? ((i = `${e.constructor.name}(${e.length})`), (s = R))
+          : (l = h(e))
+            ? ((i = `Immutable.${l.name}${'Record' === l.name ? '' : `(${e.size})`}`),
+              (u = l.arrayish),
+              (s = l.arrayish ? P : l.setish ? I : D))
+            : ((i = d(e)), (s = U)),
     n)
   ) {
     const t = document.createElement('span');
@@ -405,11 +405,11 @@ function oe(e, t, n, a, i) {
         return n === ee
           ? re(n, '', t)
           : (r = /^(?:async\s*)?(\w+)\s*=>/.exec(a))
-          ? re(n, '(' + r[1] + ')', t)
-          : (r = /^(?:async\s*)?\(\s*(\w+(?:\s*,\s*\w+)*)?\s*\)/.exec(a)) ||
-            (r = /^(?:async\s*)?function(?:\s*\*)?(?:\s*\w+)?\s*\(\s*(\w+(?:\s*,\s*\w+)*)?\s*\)/.exec(a))
-          ? re(n, r[1] ? '(' + r[1].replace(/\s*,\s*/g, ', ') + ')' : '()', t)
-          : re(n, '(…)', t);
+            ? re(n, '(' + r[1] + ')', t)
+            : (r = /^(?:async\s*)?\(\s*(\w+(?:\s*,\s*\w+)*)?\s*\)/.exec(a)) ||
+                (r = /^(?:async\s*)?function(?:\s*\*)?(?:\s*\w+)?\s*\(\s*(\w+(?:\s*,\s*\w+)*)?\s*\)/.exec(a))
+              ? re(n, r[1] ? '(' + r[1].replace(/\s*,\s*/g, ', ') + ')' : '()', t)
+              : re(n, '(…)', t);
       })(e, a);
     case 'string':
       return (function (e, t, n, a) {
@@ -591,10 +591,10 @@ function pe(e) {
         (o
           ? 'T' + de(n, 2) + ':' + de(r, 2) + ':' + de(a, 2) + '.' + de(o, 3) + 'Z'
           : a
-          ? 'T' + de(n, 2) + ':' + de(r, 2) + ':' + de(a, 2) + 'Z'
-          : r || n
-          ? 'T' + de(n, 2) + ':' + de(r, 2) + 'Z'
-          : '');
+            ? 'T' + de(n, 2) + ':' + de(r, 2) + ':' + de(a, 2) + 'Z'
+            : r || n
+              ? 'T' + de(n, 2) + ':' + de(r, 2) + 'Z'
+              : '');
 }
 function me(e) {
   var t = new RegExp('["' + e + '\n\r]'),
@@ -619,8 +619,8 @@ function me(e) {
           (t = i) >= o
             ? (c = !0)
             : 10 === (r = e.charCodeAt(i++))
-            ? (l = !0)
-            : 13 === r && ((l = !0), 10 === e.charCodeAt(i) && ++i),
+              ? (l = !0)
+              : 13 === r && ((l = !0), 10 === e.charCodeAt(i) && ++i),
           e.slice(a + 1, t - 1).replace(/""/g, '"')
         );
       }
@@ -985,18 +985,18 @@ function pt(e) {
       return /^(?:(?:(?:VARYING|NATIVE) )?CHARACTER|(?:N|VAR|NVAR)CHAR)\(/.test(e)
         ? 'string'
         : /^(?:DECIMAL|NUMERIC)\(/.test(e)
-        ? 'number'
-        : 'other';
+          ? 'number'
+          : 'other';
   }
 }
 function mt(e) {
   return 'string' == typeof e
     ? fetch(e).then(mt)
     : e instanceof Response || e instanceof Blob
-    ? e.arrayBuffer().then(mt)
-    : e instanceof ArrayBuffer
-    ? new Uint8Array(e)
-    : e;
+      ? e.arrayBuffer().then(mt)
+      : e instanceof ArrayBuffer
+        ? new Uint8Array(e)
+        : e;
 }
 function ht(e, t, n) {
   2 === arguments.length && ((n = t), (t = void 0));
@@ -1594,8 +1594,8 @@ const Rt = Pt(async (e, t) => {
           t
         )
       : _t(e) || yt(e)
-      ? Dt(e, t)
-      : e;
+        ? Dt(e, t)
+        : e;
   });
 function Dt(
   e,
@@ -1780,8 +1780,8 @@ function ln(e, t) {
       return 'bigint' == typeof e || null == e
         ? e
         : Number.isInteger('string' != typeof e || e.trim() ? +e : NaN)
-        ? BigInt(e)
-        : void 0;
+          ? BigInt(e)
+          : void 0;
     case 'integer':
     case 'number':
       return 'number' == typeof e ? e : null == e || ('string' == typeof e && !e.trim()) ? NaN : Number(e);
@@ -1865,12 +1865,12 @@ function mn(
           Array.isArray(r)
             ? ++t.array
             : r instanceof Date
-            ? ++t.date
-            : r instanceof ArrayBuffer
-            ? ++t.buffer
-            : 'number' === a
-            ? (++t.number, Number.isInteger(r) && ++t.integer)
-            : a in t && ++t[a];
+              ? ++t.date
+              : r instanceof ArrayBuffer
+                ? ++t.buffer
+                : 'number' === a
+                  ? (++t.number, Number.isInteger(r) && ++t.integer)
+                  : a in t && ++t[a];
       else {
         if (((r = r.trim()), !r)) continue;
         ++t.defined,
@@ -1878,8 +1878,8 @@ function mn(
           /^(true|false)$/i.test(r)
             ? ++t.boolean
             : r && !isNaN(r)
-            ? (++t.number, Number.isInteger(+r) && ++t.integer)
-            : cn.test(r) && ++t.date;
+              ? (++t.number, Number.isInteger(+r) && ++t.integer)
+              : cn.test(r) && ++t.date;
       }
     }
     const a = Math.max(1, 0.9 * t.defined),
@@ -2400,8 +2400,8 @@ function kn(e, t) {
     return 1 === p.childNodes.length
       ? p.removeChild(p.firstChild)
       : 11 === p.nodeType
-      ? ((a = t()).appendChild(p), a)
-      : p;
+        ? ((a = t()).appendChild(p), a)
+        : p;
   };
 }
 const Mn = kn(
@@ -2434,17 +2434,17 @@ function Un(e, t) {
   return (n = Rn.get((e = +e)))
     ? n.then(() => t)
     : (n = Date.now()) >= e
-    ? Promise.resolve(t)
-    : (function (e, t) {
-        var n = new Promise(function (n) {
-          Rn.delete(t);
-          var r = t - e;
-          if (!(r > 0)) throw new Error('invalid time');
-          if (r > 2147483647) throw new Error('too long to wait');
-          setTimeout(n, r);
-        });
-        return Rn.set(t, n), n;
-      })(n, e).then(() => t);
+      ? Promise.resolve(t)
+      : (function (e, t) {
+          var n = new Promise(function (n) {
+            Rn.delete(t);
+            var r = t - e;
+            if (!(r > 0)) throw new Error('invalid time');
+            if (r > 2147483647) throw new Error('too long to wait');
+            setTimeout(n, r);
+          });
+          return Rn.set(t, n), n;
+        })(n, e).then(() => t);
 }
 var Dn = Object.freeze({
   __proto__: null,
@@ -2799,27 +2799,27 @@ function ar(e, t, n) {
         ? 3 === o._type
           ? ((this._definition = rr(e)), (this._duplicate = n), o._duplicates.add(this))
           : 2 === o._type
-          ? ((this._outputs = o._outputs),
-            (o._outputs = new Set()),
-            this._outputs.forEach(function (e) {
-              e._inputs[e._inputs.indexOf(o)] = this;
-            }, this),
-            a._dirty.add(o).add(this),
-            r.set(e, this))
-          : ((o._duplicate = o._definition),
-            (this._duplicate = n),
-            (t = new Variable(3, this._module)),
-            (t._name = e),
-            (t._definition = this._definition = o._definition = rr(e)),
-            (t._outputs = o._outputs),
-            (o._outputs = new Set()),
-            t._outputs.forEach(function (e) {
-              e._inputs[e._inputs.indexOf(o)] = t;
-            }),
-            (t._duplicates = new Set([this, o])),
-            a._dirty.add(o).add(t),
-            a._updates.add(o).add(t),
-            r.set(e, t))
+            ? ((this._outputs = o._outputs),
+              (o._outputs = new Set()),
+              this._outputs.forEach(function (e) {
+                e._inputs[e._inputs.indexOf(o)] = this;
+              }, this),
+              a._dirty.add(o).add(this),
+              r.set(e, this))
+            : ((o._duplicate = o._definition),
+              (this._duplicate = n),
+              (t = new Variable(3, this._module)),
+              (t._name = e),
+              (t._definition = this._definition = o._definition = rr(e)),
+              (t._outputs = o._outputs),
+              (o._outputs = new Set()),
+              t._outputs.forEach(function (e) {
+                e._inputs[e._inputs.indexOf(o)] = t;
+              }),
+              (t._duplicates = new Set([this, o])),
+              a._dirty.add(o).add(t),
+              a._updates.add(o).add(t),
+              r.set(e, t))
         : r.set(e, this)),
       (this._name = e);
   }
@@ -3038,8 +3038,8 @@ const ur =
   'function' == typeof requestAnimationFrame
     ? requestAnimationFrame
     : 'function' == typeof setImmediate
-    ? setImmediate
-    : (e) => setTimeout(e, 0);
+      ? setImmediate
+      : (e) => setTimeout(e, 0);
 function Runtime(e = new Library(), t = yr) {
   const n = this.module();
   if (
@@ -3097,8 +3097,8 @@ function br(e, t) {
       return o
         ? Promise.resolve(e)
         : r
-        ? (n || (n = new Promise((e, t) => ((i = e), (s = t)))), n.then(() => e))
-        : Promise.reject();
+          ? (n || (n = new Promise((e, t) => ((i = e), (s = t)))), n.then(() => e))
+          : Promise.reject();
     }
   );
 }

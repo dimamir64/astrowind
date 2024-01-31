@@ -1,4 +1,4 @@
-import typescriptLogo from './typescript.svg'
+import typescriptLogo from './typescript.svg';
 
 export function render() {
   const html = `
@@ -17,6 +17,6 @@ export function render() {
         Click on the Vite logo to learn more
       </p>
     </div>
-  `
-  return { html }
+  `;
+  return { html };
 }

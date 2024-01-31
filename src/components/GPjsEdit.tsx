@@ -13,29 +13,29 @@ export default function GPjsEdit() {
     <GjsEditor
       grapesjs="https://unpkg.com/grapesjs"
       grapesjsCss="https://unpkg.com/grapesjs/dist/css/grapes.min.css"
-      content= '<div style="padding-top:50px; padding-bottom:50px; text-align:center">Test block</div>'
+      content='<div style="padding-top:50px; padding-bottom:50px; text-align:center">Test block</div>'
       options={{
         height: '80vh',
         storageManager: {
-            id: 'gjs-',             // Prefix identifier that will be used inside storing and loading
-            type: 'local',          // Type of the storage
-            autosave: true,         // Store data automatically
-            autoload: true,         // Autoload stored data on init
-            stepsBeforeSave: 1,     // If autosave enabled, indicates how many changes are necessary before store method is triggered
-            storeComponents: false, // Enable/Disable storing of components in JSON format
-            storeStyles: false,     // Enable/Disable storing of rules/style in JSON format
-            storeHtml: true,        // Enable/Disable storing of components as HTML string
-            storeCss: true,         // Enable/Disable storing of rules/style as CSS string
+          id: 'gjs-', // Prefix identifier that will be used inside storing and loading
+          type: 'local', // Type of the storage
+          autosave: true, // Store data automatically
+          autoload: true, // Autoload stored data on init
+          stepsBeforeSave: 1, // If autosave enabled, indicates how many changes are necessary before store method is triggered
+          storeComponents: false, // Enable/Disable storing of components in JSON format
+          storeStyles: false, // Enable/Disable storing of rules/style in JSON format
+          storeHtml: true, // Enable/Disable storing of components as HTML string
+          storeCss: true, // Enable/Disable storing of rules/style as CSS string
         },
         fromElement: true,
         pageManager: true,
-        showOffsets: true
-        }}
-      i18n= {{
-         locale: 'ru', // default locale
-         localeFallback: "ru",
+        showOffsets: true,
+      }}
+      i18n={{
+        locale: 'ru', // default locale
+        localeFallback: 'ru',
         messages: { ru: 'ru' },
-     }}
+      }}
       plugins={[
         {
           id: 'grapesjs-advance-components',

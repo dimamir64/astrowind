@@ -1,20 +1,20 @@
-import type { APIRoute } from "astro";
-import { supabase } from "../../../lib/supabase";
-import type { Provider } from "@supabase/supabase-js";
+import type { APIRoute } from 'astro';
+import { supabase } from '../../../lib/supabase';
+import type { Provider } from '@supabase/supabase-js';
 
 export const POST: APIRoute = async ({ request, cookies, redirect }) => {
   const formData = await request.formData();
-  const email = formData.get("email")?.toString();
-  const password = formData.get("password")?.toString();
-  const provider = formData.get("provider")?.toString();
+  const email = formData.get('email')?.toString();
+  const password = formData.get('password')?.toString();
+  const provider = formData.get('provider')?.toString();
 
-  const validProviders = ["google", "github", "yandex"];
+  const validProviders = ['google', 'github', 'yandex'];
 
   if (provider && validProviders.includes(provider)) {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: provider as Provider,
       options: {
-        redirectTo: "http://localhost:4321/api/auth/callback"
+        redirectTo: 'http://localhost:4321/api/auth/callback',
       },
     });
 
@@ -26,7 +26,7 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
   }
 
   if (!email || !password) {
-    return new Response("Email и пароль обязательны", { status: 400 });
+    return new Response('Email и пароль обязательны', { status: 400 });
   }
 
   const { data, error } = await supabase.auth.signInWithPassword({
@@ -39,11 +39,11 @@ export const POST: APIRoute = async ({ request, cookies, redirect }) => {
   }
 
   const { access_token, refresh_token } = data.session;
-  cookies.set("sb-access-token", access_token, {
-    path: "/",
+  cookies.set('sb-access-token', access_token, {
+    path: '/',
   });
-  cookies.set("sb-refresh-token", refresh_token, {
-    path: "/",
+  cookies.set('sb-refresh-token', refresh_token, {
+    path: '/',
   });
-  return redirect("/dashboard");
+  return redirect('/dashboard');
 };

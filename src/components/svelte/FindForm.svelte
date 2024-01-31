@@ -1,13 +1,9 @@
 <script>
     import { onMount } from "svelte";
-    import bootstrap4 from '@formio/bootstrap/bootstrap4';
+//    import 'bootstrap/dist/css/bootstrap.css'
+    //import bootstrap4 from '@formio/bootstrap/bootstrap4';
+    //import "~/styles/formio.full.min.css";
 import { Formio } from 'formiojs';
-Formio.use(bootstrap4);
-Formio.Templates.framework = "bootstrap4";
-  //  import options from "./lib/options.json";
-   // import schema from "~/lib/schema.json";
-    import f from "~/lib/f.html";
-   //Formio.use(bulma);
       let form;
       let formio; 
   let selected_language = "ru";
@@ -20,24 +16,22 @@ Formio.Templates.framework = "bootstrap4";
 
     onMount(() => {
       if (form) {
-        Formio.createForm(form, 'http://cons.ud63.online:3001/find/tur').then((formioInstance) => {
+        Formio.createForm(form, 'https://formio.cons.ud63.online/find/tur').then((formioInstance) => {
             //form=fetch("../lib/f.html");
           formio = formioInstance;
         });
       }
     });
-//    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" />
-//    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap/dist/css/bootstrap.min.css"  />
-//    <link rel="stylesheet" href="https://cdn.form.io/js/formio.full.min.css" />
 
 </script>
-  
+
 <slot />
     <div id="app" class="container pt-4"> 
       <div bind:this={form} id="form"></div>
     </div>
       
 <style >
+  
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -117,4 +111,4 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
-  </style>
+</style>

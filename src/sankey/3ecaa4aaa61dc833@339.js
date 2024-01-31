@@ -126,10 +126,10 @@ function _chart(d3, nodeAlign, data, linkColor, DOM) {
       linkColor === 'source-target'
         ? (d) => d.uid
         : linkColor === 'source'
-        ? (d) => color(d.source.category)
-        : linkColor === 'target'
-        ? (d) => color(d.target.category)
-        : linkColor
+          ? (d) => color(d.source.category)
+          : linkColor === 'target'
+            ? (d) => color(d.target.category)
+            : linkColor
     )
     .attr('stroke-width', (d) => Math.max(1, d.width));
 
