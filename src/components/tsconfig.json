@@ -12,18 +12,6 @@
       "@typography/*": [
         "./src/components/typography/*"
       ],
-      "@lib/*": [
-        "./src/utils/*"
-      ],
-      "@/lib/*": [
-        "./src/utils/*"
-      ],
-      "@/components/ui/*": [
-        "./src/components/rcui/*"
-      ],
-      "@components/ui/*": [
-        "./src/components/rcui/*"
-      ],
     },
     "jsx": "react-jsx",
     "jsxImportSource": "react",

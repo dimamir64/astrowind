@@ -11,6 +11,11 @@ import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
 import FAQs from '~/components/widgets/FAQs.astro';
 import Stats from '~/components/widgets/Stats.astro';
 import CallToAction from '~/components/widgets/CallToAction.astro';
+import { ModeToggle } from "@ui/ModeToggle";
+import { Toaster } from "@ui/toaster";
+import H1 from "@typography/H1.astro";
+
+import { Checkbox } from "@ui/checkbox";
 
 import SvelteCounter from '../components/svelte/SvelteCounter.svelte';
 import FindFrm from '../components/FindFrm.astro';
@@ -20,8 +25,11 @@ import '~/styles/global.css';
 import { createServerClient, type CookieOptions } from '@supabase/ssr';
 import * as Sentry from '@sentry/node';
 import HTMLSnippet from '~/html/ht1.html';
-/*import { IncompatibleDescriptorOptions } from 'node_modules/astro/dist/core/errors/errors-data';
 
+//import 'bootstrap/dist/css/bootstrap.css';
+
+/*import { IncompatibleDescriptorOptions } from 'node_modules/astro/dist/core/errors/errors-data';
+*/
 const supabase = createServerClient(import.meta.env.PUBLIC_SUPABASE_URL, import.meta.env.PUBLIC_SUPABASE_ANON_KEY, {
   cookies: {
     get(key: string) {
@@ -34,7 +42,7 @@ const supabase = createServerClient(import.meta.env.PUBLIC_SUPABASE_URL, import.
       Astro.cookies.delete(key, options);
     },
   },
-});*/
+});
 
 function is_number(x) {
   return x === x + 0;
@@ -58,14 +66,8 @@ if (Astro.cookies.has('counter')) {
 
 Astro.cookies.set('counter', counter);
 
-function tst1() {
-  try {
-    throw new Error('Привет Sentry! ' + counter);
-  } catch (e) {
-    cnt++;
-    Sentry.captureException(e);
-  }
-}
+
+
 /*
 const show=false;
 let personPromise;
@@ -81,7 +83,7 @@ if (show){
 } 
 else {
 }*/
----
+
 
 {
   /* <script>
@@ -98,18 +100,74 @@ else {
     }
 */
 }
+
+//export default () => {  const [checked, setChecked] = React.useState('indeterminate');
+let ch=false;
+let err ="Ошибки нет";
+function ch1() {
+ 
+  try {
+    console.log("ch1 "+ch)
+    ch=!ch;
+  } catch (e) {
+    err="Ошибка ch";
+  }
+}
+function tst1() {
+  try {
+    console.log("tst1 "+ch)
+    throw new Error('Привет Sentry! ' + counter);
+  } catch (e) {
+    cnt++;
+    Sentry.captureException(e);
+  } 
+}
+---
+
+<script>
+  let cnt=0;
+function tst1() {
+  try {
+    console.log("tst1 "+ch)
+    throw new Error('Привет Sentry! ' + counter);
+  } catch (e) {
+    cnt++;
+    Sentry.captureException(e);
+  }
+}
+</script>
+
 <Layout metadata={metadata}>
   <div>
     <h4>Counter = {counter}</h4>
   </div>
   <SvelteCounter client:idle>
-    <h1>Привет из Svelte!</h1>
+    <H1>Привет из Svelte!</H1>
   </SvelteCounter>
-  {false &&
+  <ModeToggle client:load />
+  <Toaster client:load/>
+  <form>
+ <Checkbox onCheckedChange={() => console.log("onCheckedChange")} onClick={() => console.log("onClick")}  hecked="0" client:load name="тест chbx" />{ err} {ch}
+ <br>
+ <Checkbox id="terms1" />
+ <div class="grid gap-1.5 leading-none">
+   <label
+    for="terms1"
+     class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+   >
+     Accept terms and conditions
+   </label>
+   <p class="text-sm text-muted-foreground">
+     You agree to our Terms of Service and Privacy Policy.
+   </p>
+ </div>
+</form>
+{/*false &&
   <FindFrm client:idle>
     <h1>Форма поиска из Svelte!</h1>
-  </FindFrm>
+  </FindFrm>*/
 }
+
 {
     /*  
 

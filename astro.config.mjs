@@ -2,6 +2,7 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 
 import { defineConfig, squooshImageService } from 'astro/config';
+import astroI18next from "astro-i18next";
 
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
@@ -28,7 +29,7 @@ import react from '@astrojs/react';
 import compressor from 'astro-compressor';
 import matomo from 'astro-matomo';
 import supabase from 'astro-supabase';
-//import sentry from "@sentry/astro";
+//import sentry from "@sentry/astro"; 
 //import spotlightjs from "@spotlightjs/astro";
 //import svelte from "@astrojs/svelte";
 import sentry from '@sentry/astro';

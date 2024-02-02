@@ -1,8 +1,14 @@
 import { I18N } from '~/utils/config';
+import { type ClassValue, clsx } from "clsx"
+import { twMerge } from "tailwind-merge"
+ 
+export function cn(...inputs: ClassValue[]) {
+  return twMerge(clsx(inputs))
+}
 
 const formatter: Intl.DateTimeFormat =
   I18N?.dateFormatter ||
-  new Intl.DateTimeFormat('en', {
+  new Intl.DateTimeFormat('ru', {
     year: 'numeric',
     month: 'short',
     day: 'numeric',
