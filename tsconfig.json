@@ -3,9 +3,11 @@
   "compilerOptions": {
     "strictNullChecks": true,
     "allowJs": true,
-    "baseUrl": "K:/apps/astro/astrowind",
+   //  "baseUrl": "K:/apps/astro/astrowind",
     "paths": {
-      "~/*": ["./src/*"],
+      "~/*": [
+        "./src/*"
+      ],
       "@ui/*": [
         "./src/components/rcui/*"
       ],
@@ -23,9 +25,9 @@
       ],
       "@components/ui/*": [
         "./src/components/rcui/*"
-      ],
+      ]
     },
-    "jsx": "react-jsx",
-    "jsxImportSource": "react",
-  },
+    "jsx": "preserve",
+    "jsxImportSource": "react"
+  }
 }

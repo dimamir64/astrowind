@@ -1,4 +1,4 @@
-import { defineConfig } from 'vite';
+/*import { defineConfig } from 'vite';
 import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import spotlightSidecar from '@spotlightjs/sidecar/vite-plugin';
 // https://vitejs.dev/config/
@@ -28,3 +28,4 @@ export default defineConfig({
     }),
   ],
 });
+*/
