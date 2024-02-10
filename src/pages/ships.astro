@@ -18,13 +18,16 @@ const metadata = {
     tagline="Круизный флот"
     title="Наши теплоходы"
     subtitle=""
-    actions={[      {
-      variant: 'primary',
-      text: 'Поиск круизов',
-      href: 'https://river.sputnik-germes.ru/',
-      target: '_blank',
-      icon: 'tabler:arrows-right-left',
-    },{ text: 'Смотреть подробно', href: '#features' }]}
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Поиск круизов',
+        href: 'https://river.sputnik-germes.ru/',
+        target: '_blank',
+        icon: 'tabler:arrows-right-left',
+      },
+      { text: 'Смотреть подробно', href: '#features' },
+    ]}
   />
 
   <!-- Features2 Widget ************** -->
@@ -91,7 +94,8 @@ const metadata = {
 
   <!-- Content Widget **************** -->
 
-  <Content id="features"
+  <Content
+    id="features"
     isReversed
     items={[
       {
@@ -133,7 +137,7 @@ const metadata = {
         description:
           'Пассажирский трёхпалубный теплоход-пансионат «Валерий Чкалов» (проект 26-37м) построен на судоверфи «Narodny Podnik Skoda» (Slovenske Lodenice Komarno) г. Комарно,Словакия. Полностью модернизирован. Пассажировместимость-176 чел. Оснащён современным навигационным оборудованием и развивает скорость до 23 км/час. Длина-96 м, ширина, 14 м, осадка 2,4 м. Это фирменный теплоход компании «Спутник-Гермес», находящийся в собственности.',
         icon: 'tabler:school',
-      }
+      },
     ]}
     image={{
       src: '~/assets/images/2.jpg',
@@ -189,11 +193,13 @@ const metadata = {
   <!-- CallToAction Widget *********** -->
 
   <CallToAction
-    actions={[{
-      variant: "primary",
-      text: 'Start exploring',
-      href: '/',
-    }]}
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Start exploring',
+        href: '/',
+      },
+    ]}
     title="Dive into our template collection"
     subtitle="Whether you're in business, design, or education, our templates are here to elevate your projects."
   />

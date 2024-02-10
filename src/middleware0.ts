@@ -1,5 +1,4 @@
-/*import astroFormsMiddleware from "@astro-utils/forms";
-import {sequence} from "astro/middleware";
+import {sequence} from 'astro:middleware';
+import astroForms from '@astro-utils/forms';
 
-export const onRequest = sequence(astroFormsMiddleware());
-*/
+export const onRequest = sequence(astroForms());

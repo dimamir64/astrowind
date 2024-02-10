@@ -1,7 +1,7 @@
 //import fs from 'fs';
 import yaml from 'js-yaml';
 import merge from 'lodash.merge';
-const configyml =`
+const configyml = `
 site:
   name: Спутник-Гермес
   site: 'https://hk.cons.ud63.online/'
@@ -19,9 +19,9 @@ metadata:
   openGraph:
     site_name: Спутник-Гермес
     images:
-      url: '~/assets/images/default.png'
-      width: 1200
-      height: 628
+      - url: '~/assets/images/default.png'
+        width: 1200
+        height: 628
     type: website
   twitter:
     handle: '@river'
@@ -93,9 +93,6 @@ ui:
         linkActive: var(--ph-color-link)
 `;
 
-//const config = yaml.load(fs.readFileSync('src/config.yaml', 'utf8')) as {
-  //const config = yaml.load(fs.readFileSync(configyml) as {
-
 import type { MetaData } from '~/types';
 
 export interface SiteConfig {
@@ -119,6 +116,73 @@ export interface I18NConfig {
 export interface AppBlogConfig {
   isEnabled: boolean;
   postsPerPage: number;
+  isRelatedPostsEnabled: boolean;
+  relatedPostsCount: number;
+  post: {
+    isEnabled: boolean;
+    permalink: string;
+    robots: {
+      index: boolean;
+      follow: boolean;
+    };
+  };
+  list: {
+    isEnabled: boolean;
+    pathname: string;
+    robots: {
+      index: boolean;
+      follow: boolean;
+    };
+  };
+  category: {
+    isEnabled: boolean;
+    pathname: string;
+    robots: {
+      index: boolean;
+      follow: boolean;
+    };
+  };
+  tag: {
+    isEnabled: boolean;
+    pathname: string;
+    robots: {
+      index: boolean;
+      follow: boolean;
+    };
+  };
+}
+export interface AnalyticsConfig {
+  vendors: {
+    googleAnalytics: {
+      id?: string;
+      partytown?: boolean;
+    };
+  };
+}import type { MetaData } from '~/types';
+
+export interface SiteConfig {
+  name: string;
+  site?: string;
+  base?: string;
+  trailingSlash?: boolean;
+  googleSiteVerificationId?: string;
+}
+export interface MetaDataConfig extends Omit<MetaData, 'title'> {
+  title?: {
+    default: string;
+    template: string;
+  };
+}
+export interface I18NConfig {
+  language: string;
+  textDirection: string;
+  dateFormatter?: Intl.DateTimeFormat;
+}
+export interface AppBlogConfig {
+  isEnabled: boolean;
+  postsPerPage: number;
+  isRelatedPostsEnabled: boolean;
+  relatedPostsCount: number;
   post: {
     isEnabled: boolean;
     permalink: string;
@@ -232,6 +296,8 @@ const getAppBlog = () => {
   const _default = {
     isEnabled: false,
     postsPerPage: 6,
+    isRelatedPostsEnabled: false,
+    relatedPostsCount: 4,
     post: {
       isEnabled: true,
       permalink: '/blog/%slug%',
@@ -291,6 +357,8 @@ const getAnalytics = () => {
 
   return merge({}, _default, config?.analytics ?? {}) as AnalyticsConfig;
 };
+
+
 export const SITE = getSite();
 export const I18N = getI18N();
 export const METADATA = getMetadata();
@@ -298,9 +366,9 @@ export const APP_BLOG = getAppBlog();
 export const UI = getUI();
 export const ANALYTICS = getAnalytics();
 
-export const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL
-export const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY
-export const cookiePrefix = import.meta.env.PUBLIC_SUPABASE_COOKIE_PRE
+export const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+export const supabaseAnonKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
+export const cookiePrefix = import.meta.env.PUBLIC_SUPABASE_COOKIE_PRE;
 
-export const accessTokenName = `${import.meta.env.PUBLIC_SUPABASE_COOKIE_PRE}-access-token`
-export const refreshTokenName = `${import.meta.env.PUBLIC_SUPABASE_COOKIE_PRE}-refresh-token`
+export const accessTokenName = `${import.meta.env.PUBLIC_SUPABASE_COOKIE_PRE}-access-token`;
+export const refreshTokenName = `${import.meta.env.PUBLIC_SUPABASE_COOKIE_PRE}-refresh-token`;

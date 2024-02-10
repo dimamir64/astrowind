@@ -4,21 +4,20 @@
 /// <reference types="vite/client" />
 
 interface ImportMetaEnv {
-  readonly PUBLIC_APPWRITE_ENDPOINT: string;
-  readonly PUBLIC_APPWRITE_PROJECT_ID: string;
-  readonly PUBLIC_APPWRITE_DB_ID: string;
-  readonly PUBLIC_APPWRITE_POSTS_ID: string;
-  readonly PUBLIC_APPWRITE_COMMENTS_ID: string;
-  readonly PUBLIC_APPWRITE_BUCKET_ID: string;
+  readonly PUBLIC_SUPABASE_URL: string;
+  readonly PUBLIC_SUPABASE_ANON_KEY: string;
+}
+
+interface ImportMeta {
+  readonly env: ImportMetaEnv;
 }
 
 declare namespace App {
   interface Locals {
-      user: {
-          name: string
-      },
-      welcomeTitle: () => string,
-      orders: Map<string, object>
+    user: {
+      name: string;
+    };
+    welcomeTitle: () => string;
+    orders: Map<string, object>;
   }
 }
-

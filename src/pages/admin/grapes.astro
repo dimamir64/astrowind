@@ -1,18 +1,16 @@
 ---
-
 import Layout from '~/layouts/PageLayout.astro';
 import GPjsEdit from '~/components/GPjsEdit';
 const someProps = {
-	count: 0,
-}; 
+  count: 3,
+};
 const metadata = {
   title: 'страница grapes',
 };
---- 
+---
 
 <Layout metadata={metadata}>
-<GPjsEdit  {...someProps}  client:visible>
-  <h1>Hello, React!</h1>
-</GPjsEdit>
+  <GPjsEdit {...someProps} client:visible>
+    <h1>Hello, React!</h1>
+  </GPjsEdit>
 </Layout>
-

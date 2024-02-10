@@ -1,10 +1,10 @@
-import { defineConfig } from 'vite'
-import { nodePolyfills } from 'vite-plugin-node-polyfills'
+/*import { defineConfig } from 'vite';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
 import spotlightSidecar from '@spotlightjs/sidecar/vite-plugin';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
-      spotlightSidecar(),
+    spotlightSidecar(),
     nodePolyfills({
       // To add only specific polyfills, add them here. If no option is passed, adds all polyfills
       include: ['path'],
@@ -27,4 +27,5 @@ export default defineConfig({
       protocolImports: true,
     }),
   ],
-})
+});
+*/
