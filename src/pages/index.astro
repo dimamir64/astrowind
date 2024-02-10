@@ -1,0 +1,598 @@
+---
+import Layout from '~/layouts/PageLayout.astro';
+
+import Hero from '~/components/widgets/Hero.astro';
+import Note from '~/components/widgets/Note.astro';
+import Features from '~/components/widgets/Features.astro';
+import Features2 from '~/components/widgets/Features2.astro';
+import Steps from '~/components/widgets/Steps.astro';
+import Content from '~/components/widgets/Content.astro';
+import BlogLatestPosts from '~/components/widgets/BlogLatestPosts.astro';
+import FAQs from '~/components/widgets/FAQs.astro';
+import Stats from '~/components/widgets/Stats.astro';
+import CallToAction from '~/components/widgets/CallToAction.astro';
+/*import { ModeToggle } from "@ui/ModeToggle";
+import { Toaster } from "@ui/toaster";
+import H1 from "@typography/H1.astro";
+import Counter from '../components/Counter.vue';
+import Frm from '../components/Frm.vue';
+
+import { Checkbox } from "@ui/checkbox";
+
+import SvelteCounter from '../components/svelte/SvelteCounter.svelte';*/
+import FindFrm from '../components/FindFrm.astro';
+import '~/styles/search.css';
+import '~/styles/global.css';
+//import  '~/styles/riv1.css';
+import { createServerClient, type CookieOptions } from '@supabase/ssr';
+import * as Sentry from '@sentry/node';
+import HTMLSnippet from '~/html/ht1.html';
+
+//import 'bootstrap/dist/css/bootstrap.css';
+
+/*import { IncompatibleDescriptorOptions } from 'node_modules/astro/dist/core/errors/errors-data';
+*/
+const supabase = createServerClient(import.meta.env.PUBLIC_SUPABASE_URL, import.meta.env.PUBLIC_SUPABASE_ANON_KEY, {
+  cookies: {
+    get(key: string) {
+      return Astro.cookies.get(key)?.value;
+    },
+    set(key: string, value: string, options: CookieOptions) {
+      Astro.cookies.set(key, value, options);
+    },
+    remove(key: string, options) {
+      Astro.cookies.delete(key, options);
+    },
+  },
+});
+
+function is_number(x) {
+  return x === x + 0;
+}
+
+const metadata = {
+  title: 'Поиск и бронирование речных круизов от компании Спутник-Гермес 2024',
+  ignoreTitleTemplate: true,
+};
+let counter = 0;
+let cnt = 0;
+
+if (Astro.cookies.has('counter')) {
+  let c = Number(Astro.cookies.get('counter')?.value);
+  //console.log("c=",c,is_number(c))
+  if (!is_number(c)) {
+    c = 0;
+  }
+  counter = c + 1;
+} else Astro.cookies.set('counter', '0');
+
+Astro.cookies.set('counter', counter);
+
+/* 
+const show=false;
+let personPromise;
+let factPromise;
+
+if (show){
+ personPromise = fetch('https://randomuser.me/api/')
+  .then(response => response.json())
+  .then(results =>  JSON.stringify(results.results[0],null,2));//?.name.first
+ factPromise = fetch('https://catfact.ninja/fact')
+  .then(response => response.json())
+  .then(factData => factData.fact);
+} 
+else {
+}*/
+
+
+{
+  /* <script>
+  const supabase = createBrowseClient( //createBrowserClient
+    import.meta.env.PUBLIC_SUPABASE_URL,
+    import.meta.env.PUBLIC_SUPABASE_ANON_KEY
+  );
+</script>
+    {show &&
+      <h2>A name</h2>
+      <code>{personPromise}</code>
+      <h2>A fact</h2>
+      <p>{factPromise}</p>
+    }
+*/
+}
+
+//export default () => {  const [checked, setChecked] = React.useState('indeterminate');
+let ch=false;
+let err ="Ошибки нет";
+function ch1() {
+ 
+  try {
+    console.log("ch1 "+ch)
+    ch=!ch;
+  } catch (e) {
+    err="Ошибка ch";
+  }
+}
+function tst1() {
+  try {
+    console.log("tst1 "+ch)
+    throw new Error('Привет Sentry! ' + counter);
+  } catch (e) {
+    cnt++;
+    Sentry.captureException(e);
+  } 
+}
+---
+
+<script>
+  let cnt1=0;
+function tst1() {
+  try {
+    console.log("tst1 "+cnt1);
+    //cnt1++;
+    throw new Error('Привет Sentry! ' + cnt1);
+  } catch (e) {
+    cnt1++;
+    Sentry.captureException(e);
+  }
+}
+function handleClick() {
+		console.log('button clicked!')
+	}
+	//document.getElementById('tsterr').addEventListener('click', tst1)
+
+</script>
+
+<Layout metadata={metadata}>
+  <div>
+    <h4>Counter = {counter}</h4>
+  </div>
+{/*  <Frm client:only/>
+  <SvelteCounter client:idle>
+    <H1>Привет из Svelte!</H1>
+  </SvelteCounter>
+  <Counter client:only>
+    <h1>Привет из, Vue!</h1>
+  </Counter>
+
+false &&      client:only="react"             */
+}
+  <FindFrm >
+    <h1>Форма поиска из Svelte!</h1>
+  </FindFrm>
+{/*
+<button id="tsterr" onclick="tst1()"
+    type="button"
+    class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300
+  dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-2 py-1 text-center mr-1 mb-1"
+  >
+    Throw test error {cnt}
+  </button>
+  <br /> */}
+  <Hero
+    actions={[
+      {
+        variant: 'primary',
+        text: 'Поиск круизов',
+        href: 'https://river.sputnik-germes.ru/',
+        target: '_blank',
+        icon: 'tabler:arrows-right-left',
+      },
+      { text: 'Подробне', href: '#features' },
+    ]}
+    image={{ src: '~/assets/images/49.jpg', alt: 'Теплоход Федор Достоевский' }}
+  >
+    <Fragment slot="title">
+      Раннее бронирование <span class="hidden xl:inline">круизов на 2024 год</span>
+      <span class="text-accent dark:text-white highlight"> </span>
+    </Fragment>
+
+    <Fragment slot="subtitle">
+      <span class="hidden sm:inline">
+        <span class="font-semibold">Скидки</span> на раннее бронирование. Специальные условия оплаты</span
+      >
+    </Fragment>
+  </Hero>
+{false &&
+  <HTMLSnippet />
+}
+  <Content
+    id="features"
+    isReversed
+    items={[
+      {
+        title: 'Комфортабельный четырёхпалубный теплоход проекта 301м',
+        description:
+          'Построен в Германии. В 1996 году был полностью переоборудован. Длина судна-125 м., ширина-16,7 м., скорость-26 км/час, пассажировместимость до 270 человек. На своём борту имеет 16 кают категории “Люкс” с дополнительным сервисом, комфортабельные 1-но, 2-х и 3-х местные каюты со всеми удобствами.',
+        icon: 'tabler:wand',
+      },
+      {
+        title: 'Комфорт',
+        description:
+          'Попадая на борт корабля оказываешься в атмосфере комфорта. Просторные палубы со смотровыми площадками и объемное внутреннее пространство создают условия для полноценного размеренного отдыха. Теплоход подходит как для пар и соло-путешественников, так для небольших компаний и корпоративных мероприятий.',
+        icon: 'tabler:settings',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/49.jpg',
+      alt: 'Features Image',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Федор Достоевский</h3>
+    </Fragment>
+  </Content>
+
+  <Content
+    isAfterContent
+    items={[
+      {
+        title: 'Оптимальный выбор',
+        description:
+          'Фирменный теплоход «Валерий Чкалов» обладает особой атмосферой и отлично зарекомендовал себя как оптимальный вариант для корпоративных мероприятий и встреч старых и новых друзей',
+        icon: 'tabler:clock',
+      },
+      {
+        title: 'Подробнее',
+        description:
+          'Пассажирский трёхпалубный теплоход-пансионат «Валерий Чкалов» (проект 26-37м) построен на судоверфи «Narodny Podnik Skoda» (Slovenske Lodenice Komarno) г. Комарно,Словакия. Полностью модернизирован. Пассажировместимость-176 чел. Оснащён современным навигационным оборудованием и развивает скорость до 23 км/час. Длина-96 м, ширина, 14 м, осадка 2,4 м. Это фирменный теплоход компании «Спутник-Гермес», находящийся в собственности.',
+        icon: 'tabler:school',
+      },
+    ]}
+    image={{
+      src: '~/assets/images/2.jpg',
+      alt: 'Валерий Чкалов',
+    }}
+  >
+    <Fragment slot="content">
+      <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Валерий Чкалов</h3>
+    </Fragment>
+  </Content>
+  <Fragment></Fragment>
+  <!-- Note Widget ******************* -->
+  <Note />
+
+  <!-- Features Widget *************** -->
+  <Features
+    id="features"
+    tagline="Наши преимущества"
+    title="Лучшие круизы по Волге от Спутник-Гермес"
+    subtitle="One of the most professional and comprehensive templates currently on the market. Most starred & forked Astro theme in 2022."
+    items={[
+      {
+        title: 'Astro + Tailwind CSS Integration',
+        description:
+          'A seamless integration between two great frameworks that offer high productivity, performance and versatility.',
+        icon: 'tabler:brand-tailwind',
+      },
+      {
+        title: 'Ready-to-use Components',
+        description:
+          'Widgets made with Tailwind CSS ready to be used in Marketing Websites, SaaS, Blogs, Personal Profiles, Small Business...',
+        icon: 'tabler:components',
+      },
+      {
+        title: 'Best Practices',
+        description:
+          'Creating secure, efficient, and user-friendly websites that deliver exceptional experiences and lasting value.',
+        icon: 'tabler:list-check',
+      },
+      {
+        title: 'Excellent Page Speed',
+        description:
+          'Having a good page speed impacts organic search ranking, improves user experience (UI/UX) and increase conversion rates.',
+        icon: 'tabler:rocket',
+      },
+      {
+        title: 'Search Engine Optimization (SEO)',
+        description:
+          "SEO lies in its ability to enhance a website's visibility, driving organic traffic and enabling it to reach a wider audience.",
+        icon: 'tabler:arrows-right-left',
+      },
+      {
+        title: 'Open to new ideas and contributions',
+        description:
+          'Embracing a culture that is open to new ideas and contributions is integral fostering innovation, collaboration, and a dynamic user experience.',
+        icon: 'tabler:bulb',
+      },
+    ]}
+  />
+</Layout>
+
+<!-- Content Widget **************** -->
+
+<Content
+  isReversed
+  tagline="Inside template"
+  title="AstroWind's Blueprint: Fun Meets Functionality!"
+  items={[
+    {
+      title: 'Built on top of Astro 3.0',
+      description:
+        'Benefiting from the performance and developer-friendly features of this modern static site generator.',
+    },
+    {
+      title: 'Styled using Tailwind CSS',
+      description:
+        'Facilitating rapid design and consistent styling with this highly popular utility-first CSS framework.',
+    },
+    {
+      title: 'Cross-browser compatibility',
+      description:
+        'Ensure your website looks and functions consistently across various web browsers, delivering a seamless experience to all users.',
+    },
+  ]}
+  image={{
+    src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    alt: 'Colorful Image',
+  }}
+>
+  <Fragment slot="content">
+    <h3 class="text-2xl font-bold tracking-tight dark:text-white sm:text-3xl mb-2">Building on modern foundations</h3>
+    Gain a competitive advantage by incorporating industry leading practices
+  </Fragment>
+
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+  </Fragment>
+</Content>
+
+<!-- Content Widget **************** -->
+
+<Content
+  isAfterContent
+  items={[
+    {
+      title: 'High level of customization',
+      description: `Tailor the template effortlessly to match your brand's identity and requirements, making your website distinct and saving you time.`,
+    },
+    {
+      title: 'Multiple layout possibilities',
+      description:
+        'Explore various layout options to find the structure that best presents your content, enhancing user engagement and navigation.',
+    },
+    {
+      title: 'Fully responsive design',
+      description:
+        "Ensure your website's optimal performance on various devices and screen sizes, providing a consistent and enjoyable user experience.",
+    },
+    {
+      title: 'Integration of media',
+      description:
+        'Seamlessly incorporate images, videos, and multimedia elements that enhance your content and engage visitors effectively.',
+    },
+  ]}
+  image={{
+    src: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2194&q=80',
+    alt: 'Blueprint Image',
+  }}
+>
+  <Fragment slot="content">Ensure your online presence truly represents you.</Fragment>
+
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+  </Fragment>
+</Content>
+
+<!-- Content Widget **************** -->
+
+<Content
+  isReversed
+  isAfterContent
+  items={[
+    {
+      title: 'Enhanced user engagement',
+      description:
+        'Captivate your audience with interactive elements, intuitive navigation, and visually appealing layouts, encouraging longer visits.',
+    },
+    {
+      title: 'Continuous improvement',
+      description:
+        'Ensure your website stays aligned with the latest trends and technologies through regular updates and enhancements.',
+    },
+    {
+      title: 'Time and resource efficiency',
+      description:
+        'Skip the time-consuming process of building a website from scratch and launch your online presence sooner with AstroWind.',
+    },
+    {
+      title: 'Community support',
+      description: `Join the growing AstroWind community for insights, resources, and assistance, ensuring you're never alone on your web development journey.`,
+    },
+  ]}
+  image={{
+    src: 'https://images.unsplash.com/photo-1611462985358-60d3498e0364?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80',
+    alt: 'Astronauts Image',
+  }}
+>
+  <Fragment slot="content">Designed to foster growth and success.</Fragment>
+
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+  </Fragment>
+</Content>
+
+<!-- Steps Widget ****************** -->
+
+<Steps
+  title="Get your dream website up and running in no time with AstroWind."
+  items={[
+    {
+      title: 'Step 1: <span class="font-medium">Download</span>',
+      description:
+        "Kickstart with GitHub! Either fork the AstroWind template or simply click 'Use this template'. Your canvas awaits, ready for your digital masterpiece. In just a few clicks, you've already set the foundation.",
+      icon: 'tabler:package',
+    },
+    {
+      title: 'Step 2: <span class="font-medium">Add content</em>',
+      description:
+        "Pour your vision into it. Add images, text, and all that jazz to breathe life into your digital space. Remember, it's the content that tells your story, so make it captivating.",
+      icon: 'tabler:letter-case',
+    },
+    {
+      title: 'Step 3: <span class="font-medium">Customize styles</span>',
+      description:
+        'Give it your personal touch. Tailor colors, fonts, and layouts until it feels just right. Your unique flair, amplified by AstroWind! Precision in design ensures a seamless user experience.',
+      icon: 'tabler:paint',
+    },
+    {
+      title: 'Ready!',
+      icon: 'tabler:check',
+    },
+  ]}
+  image={{
+    src: 'https://images.unsplash.com/photo-1616198814651-e71f960c3180?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80',
+    alt: 'Steps image',
+  }}
+/>
+
+<!-- Features2 Widget ************** -->
+
+<Features2
+  title="Most used widgets"
+  subtitle="Provides frequently used components for building websites using Tailwind CSS"
+  tagline="Components"
+  items={[
+    {
+      title: 'Headers',
+      description: "Ever tried driving without GPS? Boom! That's why websites need headers for direction.",
+      icon: 'flat-color-icons:template',
+    },
+    {
+      title: 'Heros',
+      description:
+        "Picture a superhero landing – epic, right? That's the job of a Hero section, making grand entrances!",
+      icon: 'flat-color-icons:gallery',
+    },
+    {
+      title: 'Features',
+      description:
+        'Where websites strut their stuff and show off superpowers. No holding back on the bragging rights here!',
+      icon: 'flat-color-icons:approval',
+    },
+    {
+      title: 'Content',
+      description:
+        "Dive into the meat and potatoes of a site; without it, you'd just be window shopping. Content is king.",
+      icon: 'flat-color-icons:document',
+    },
+    {
+      title: 'Call-to-Action',
+      description:
+        'That enthusiastic friend who\'s always urging, "Do it! Do it!"? Yeah, that\'s this button nudging you towards adventure.',
+      icon: 'flat-color-icons:advertising',
+    },
+    {
+      title: 'Pricing',
+      description: 'Behold the dessert menu of the website world. Tempting choices await, can you resist?',
+      icon: 'flat-color-icons:currency-exchange',
+    },
+    {
+      title: 'Testimonial',
+      description: 'Step into the gossip corner! Here, other visitors spill the beans and share the juicy details.',
+      icon: 'flat-color-icons:voice-presentation',
+    },
+    {
+      title: 'Contact',
+      description:
+        'Like a digital mailbox, but faster! Drop a line, ask a question, or send a virtual high-five. Ding! Message in.',
+      icon: 'flat-color-icons:business-contact',
+    },
+    {
+      title: 'Footers',
+      description: "The footer's like the credits of a movie but sprinkled with easter eggs. Time to hunt!",
+      icon: 'flat-color-icons:database',
+    },
+  ]}
+>
+  <Fragment slot="bg">
+    <div class="absolute inset-0 bg-blue-50 dark:bg-transparent"></div>
+  </Fragment>
+</Features2>
+
+<!-- HighlightedPosts Widget ******* -->
+
+<BlogLatestPosts
+  title="Find out more content in our Blog"
+  information={`The blog is used to display AstroWind documentation.
+                        Each new article will be an important step that you will need to know to be an expert in creating a website using Astro + Tailwind CSS.
+                        Astro is a very interesting technology. Thanks.
+                `}
+/>
+
+<!-- FAQs Widget ******************* -->
+
+<FAQs
+  title="Frequently Asked Questions"
+  subtitle="Dive into the following questions to gain insights into the powerful features that AstroWind offers and how it can elevate your web development journey."
+  tagline="FAQs"
+  classes={{ container: 'max-w-6xl' }}
+  items={[
+    {
+      title: 'Why AstroWind?',
+      description:
+        "Michael Knight a young loner on a crusade to champion the cause of the innocent. The helpless. The powerless in a world of criminals who operate above the law. Here he comes Here comes Speed Racer. He's a demon on wheels.",
+    },
+    {
+      title: 'What do I need to start?',
+      description:
+        'Space, the final frontier. These are the voyages of the Starship Enterprise. Its five-year mission: to explore strange new worlds. Many say exploration is part of our destiny, but it’s actually our duty to future generations.',
+    },
+    {
+      title: 'How to install the Astro + Tailwind CSS template?',
+      description:
+        "Well, the way they make shows is, they make one show. That show's called a pilot. Then they show that show to the people who make shows, and on the strength of that one show they decide if they're going to make more shows.",
+    },
+    {
+      title: "What's something that you don't understand?",
+      description:
+        "A flower in my garden, a mystery in my panties. Heart attack never stopped old Big Bear. I didn't even know we were calling him Big Bear.",
+    },
+    {
+      title: 'What is something that you would like to try again?',
+      description:
+        "A business big enough that it could be listed on the NASDAQ goes belly up. Disappears! It ceases to exist without me. No, you clearly don't know who you're talking to, so let me clue you in.",
+    },
+    {
+      title: 'If you could only ask one question to each person you meet, what would that question be?',
+      description:
+        "This is not about revenge. This is about justice. A lot of things can change in twelve years, Admiral. Well, that's certainly good to know. About four years. I got tired of hearing how young I looked.",
+    },
+  ]}
+/>
+
+<!-- Stats Widget ****************** -->
+
+<Stats
+  stats={[
+    { title: 'В туризме', amount: '22 года' },
+    { title: 'Сотрудников', amount: '250' },
+    { title: 'Туристов', amount: '103.3K' },
+    { title: 'Пользователей', amount: '38.4K' },
+  ]}
+/>
+
+<!-- CallToAction Widget *********** -->
+
+<CallToAction
+  actions={[
+    {
+      variant: 'primary',
+      text: 'Get template',
+      href: 'https://github.com/onwidget/astrowind',
+      target: '_blank',
+      icon: 'tabler:download',
+    },
+  ]}
+>
+  <Fragment slot="title">
+    Astro&nbsp;+&nbsp;<br class="block sm:hidden" /><span class="sm:whitespace-nowrap">Tailwind CSS</span>
+  </Fragment>
+
+  <Fragment slot="subtitle">
+    Be very surprised by these huge fake numbers you are seeing on this page. <br class="hidden md:inline" />Don't waste
+    more time! :P
+  </Fragment>
+</CallToAction>
+
+</Layout>
